@@ -1,0 +1,1 @@
+export{J as default}from'./main-G2GFjLBG.js';
