@@ -1,0 +1,154 @@
+// ── CASRE Footer ──────────────────────────────────────────────────────────────
+// Prefijo: casre__footer — fondo azul oscuro corporativo (--color-primary-dark)
+
+.casre__footer {
+  background: #0f2d52;
+  padding: clamp(56px, 8vw, 80px) clamp(20px, 4vw, 48px) 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.casre__footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 36px;
+  }
+}
+
+// ── Columnas ─────────────────────────────────────────────────────────────────
+.casre__footer-col {
+  flex: 1;
+  min-width: 180px;
+
+  &--brand {
+    flex: 1.6;
+    min-width: 220px;
+  }
+}
+
+.casre__footer-logo {
+  height: clamp(100px, 12vh, 160px); // Un poco más pequeñito
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin-bottom: 24px;
+}
+
+.casre__footer-tagline {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.65);
+  max-width: 280px;
+}
+
+.casre__footer-col-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #F37021;
+  margin-bottom: 20px;
+}
+
+// ── Links ─────────────────────────────────────────────────────────────────────
+.casre__footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  a {
+    font-size: 0.93rem;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s ease, padding-left 0.2s ease;
+
+    &:hover {
+      color: #F37021;
+      padding-left: 4px;
+    }
+  }
+}
+
+// ── Contact ───────────────────────────────────────────────────────────────────
+.casre__footer-contact {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}
+
+.casre__footer-contact-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-size: 1rem;
+  color: #F37021;
+}
+
+.casre__footer-contact {
+  a, address {
+    font-style: normal;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a:hover { color: #F37021; }
+}
+
+// ── Socials ───────────────────────────────────────────────────────────────────
+.casre__footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.casre__footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  transition: color 0.2s ease;
+
+  svg { flex-shrink: 0; }
+
+  &:hover { color: #F37021; }
+
+  &--whatsapp:hover { color: #25d366; }
+}
+
+// ── Bottom bar ────────────────────────────────────────────────────────────────
+.casre__footer-bottom {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.casre__footer-copy {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+  text-align: center;
+  margin: 0;
+}

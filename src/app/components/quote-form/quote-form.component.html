@@ -1,0 +1,131 @@
+<section id="cotizar" class="casre__quote">
+  <!-- Encabezado -->
+  <div class="casre__quote-header">
+    <h2 class="casre__quote-title">
+      <span class="casre__quote-title--dark">HABLEMOS DE</span>&nbsp;<span class="casre__quote-title--accent">TU PROYECTO</span>
+    </h2>
+    <p class="casre__quote-subtitle">
+      Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.
+    </p>
+  </div>
+
+  <div class="casre__quote-inner">
+    <!-- Columna Izquierda: Imagen con CTA superpuesto -->
+    <div class="casre__quote-image-col">
+      <div class="casre__quote-image-wrapper">
+        <img
+          src="/assets/images/topografo.webp"
+          alt="Topografía y Catastro"
+          class="casre__quote-img"
+          loading="lazy"
+        />
+        <!-- Efecto borroso sutil, la imagen será muy visible -->
+        <div class="casre__quote-img-overlay">
+          <!-- Caja con fondo blanco sólido para asegurar legibilidad -->
+          <div class="casre__quote-cta-box">
+            <h3>¿Prefieres escribirnos directo?</h3>
+            
+            <a [href]="waUrl" target="_blank" class="casre__quote-wa-btn">
+              Abrir chat de WhatsApp <span>→</span>
+            </a>
+
+            <ul class="casre__quote-benefits">
+              <li><i class="casre__quote-check">✓</i> Atención personalizada</li>
+              <li><i class="casre__quote-check">✓</i> Asesoramiento gratuito</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna Derecha: Tarjeta del formulario -->
+    <div class="casre__quote-form-col">
+      <div class="casre__quote-card">
+
+        <div class="casre__quote-row">
+          <div class="casre__quote-field">
+            <input
+              id="qf-nombre"
+              type="text"
+              [ngModel]="form().nombre"
+              (ngModelChange)="updateField('nombre', $event)"
+              placeholder="Nombre"
+              autocomplete="given-name"
+            />
+          </div>
+          <div class="casre__quote-field">
+            <input
+              id="qf-apellido"
+              type="text"
+              [ngModel]="form().apellido"
+              (ngModelChange)="updateField('apellido', $event)"
+              placeholder="Apellido"
+              autocomplete="family-name"
+            />
+          </div>
+        </div>
+
+        <div class="casre__quote-row">
+          <div class="casre__quote-field">
+            <input
+              id="qf-empresa"
+              type="text"
+              [ngModel]="form().empresa"
+              (ngModelChange)="updateField('empresa', $event)"
+              placeholder="Empresa"
+              autocomplete="organization"
+            />
+          </div>
+          <div class="casre__quote-field">
+            <input
+              id="qf-telefono"
+              type="tel"
+              [ngModel]="form().telefono"
+              (ngModelChange)="updateField('telefono', $event)"
+              placeholder="Teléfono"
+              autocomplete="tel"
+              maxlength="9"
+              pattern="[0-9]*"
+              (input)="form().telefono = form().telefono.replace(/[^0-9]/g, '')"
+            />
+          </div>
+        </div>
+
+        <div class="casre__quote-field casre__quote-field--full">
+          <input
+            id="qf-email"
+            type="email"
+            [ngModel]="form().email"
+            (ngModelChange)="updateField('email', $event)"
+            placeholder="Correo Electrónico"
+            autocomplete="email"
+          />
+        </div>
+
+        <div class="casre__quote-field casre__quote-field--full">
+          <textarea
+            id="qf-mensaje"
+            rows="4"
+            [ngModel]="form().mensaje"
+            (ngModelChange)="updateField('mensaje', $event)"
+            placeholder="Cuéntanos cómo podemos ayudarte"
+          ></textarea>
+        </div>
+
+        <!-- Botón enviar -->
+        <button
+          class="casre__quote-submit"
+          [disabled]="!isValid() || isSubmitting()"
+          (click)="submit()"
+          type="button"
+        >
+          @if (isSubmitting()) {
+            <span class="casre__quote-spinner"></span>
+          }
+          ENVIAR MENSAJE
+        </button>
+
+      </div>
+    </div>
+  </div>
+</section>

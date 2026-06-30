@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap');
+
+// ══════════════════════════════════════════════════════════════════════════════
+// CASRE INGENIERÍA — Design System v2
+// ══════════════════════════════════════════════════════════════════════════════
+:root {
+  // ── Brand Colors ────────────────────────────────────────────────────────────
+  --color-primary:        #1a4480;          // Azul corporativo medio
+  --color-primary-light:  #2563eb;          // Azul claro
+  --color-primary-dark:   #0f2d52;          // Azul marino oscuro (navbar, footer, servicios)
+  --color-accent:         #F37021;          // Naranja corporativo CASRE
+  --color-accent-light:   #f58a47;
+  --color-accent-dark:    #d45e10;
+
+  // ── Neutrals ────────────────────────────────────────────────────────────────
+  --color-bg-light:       #F8F9FA;
+  --color-bg-section:     #f1f3f5;
+  --color-white:          #ffffff;
+  --color-text-dark:      #1a1e22;
+  --color-text-body:      #4a5568;
+  --color-text-muted:     #718096;
+  --color-border:         #e2e8f0;
+
+  // ── Typography ───────────────────────────────────────────────────────────────
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body:    'Lato', sans-serif;
+
+  // ── Shape ───────────────────────────────────────────────────────────────────
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 32px;
+
+  // ── Shadows ─────────────────────────────────────────────────────────────────
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:     0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg:     0 10px 40px rgba(0,0,0,0.12);
+  --shadow-accent: 0 8px 24px rgba(243,112,33,0.25);
+
+  // ── Transitions ──────────────────────────────────────────────────────────────
+  --ease:           cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast:  150ms;
+  --duration-base:  280ms;
+  --duration-slow:  450ms;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// RESET
+// ══════════════════════════════════════════════════════════════════════════════
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-body);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+// ── Headings siempre Montserrat ──────────────────────────────────────────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-text-dark);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+// ── Base ────────────────────────────────────────────────────────────────────
+a            { text-decoration: none; color: inherit; }
+img          { max-width: 100%; display: block; }
+button       { cursor: pointer; border: none; background: none; font-family: inherit; }
+address      { font-style: normal; }
+
+// ── Scrollbar ────────────────────────────────────────────────────────────────
+::-webkit-scrollbar          { width: 5px; }
+::-webkit-scrollbar-track    { background: var(--color-bg-light); }
+::-webkit-scrollbar-thumb    { background: var(--color-primary-light); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+// ── Layout principal ─────────────────────────────────────────────────────────
+main {
+  display: block;
+  width: 100%;
+  padding-top: 80px; // compensa la navbar fija
+}
+
+// ── Swiper overrides ─────────────────────────────────────────────────────────
+.swiper-pagination-bullet {
+  background: var(--color-primary) !important;
+  opacity: 0.4;
+  &-active { background: var(--color-accent) !important; opacity: 1 !important; }
+}
+.swiper-button-next,
+.swiper-button-prev { color: var(--color-accent) !important; }
+
+// ── SweetAlert2 Overrides ──────────────────────────────────────────────────
+body.swal2-shown [class^="swal2-"] {
+  font-family: 'Lato', sans-serif !important;
+}
+body.swal2-shown .swal2-title {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 800 !important;
+}

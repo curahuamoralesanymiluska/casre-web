@@ -1,0 +1,132 @@
+// ── CASRE About ──────────────────────────────────────────────────────────────
+// Igual que la imagen de referencia: fondo blanco, SOBRE naranja, NOSOTROS oscuro
+
+.casre__about {
+  display: block !important;
+  visibility: visible !important;
+  width: 100%;
+  background: #eef3fa; // Azul muy suave, igual que el formulario
+  padding: clamp(60px, 7vw, 100px) 0;
+  overflow: hidden;
+}
+
+.casre__about-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 5vw, 70px);
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 36px;
+  }
+}
+
+// ── Imagen ────────────────────────────────────────────────────────────────────
+.casre__about-image-wrapper {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+    height: 280px;
+  }
+}
+
+.casre__about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 380px;
+
+  @media (max-width: 900px) {
+    min-height: 280px;
+  }
+}
+
+// ── Contenido ─────────────────────────────────────────────────────────────────
+.casre__about-content {
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+}
+
+// ── Título: SOBRE (naranja) + NOSOTROS (azul muy oscuro) ──────────────────────
+.casre__about-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin: 0 0 16px 0;
+
+  &--naranja { color: #F37021; }           // SOBRE → naranja
+  &--oscuro  { color: #1a1e22; }           // NOSOTROS → negro/muy oscuro
+}
+
+// ── Subtítulo naranja uppercase (como en la imagen) ───────────────────────────
+.casre__about-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-weight: 700;
+  color: #F37021;                          // Naranja
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 22px 0;
+}
+
+.casre__about-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: #4a5568;
+  margin: 0 0 28px 0;
+}
+
+// ── Features: lista simple con ✓ naranja (como en la imagen) ─────────────────
+.casre__about-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.casre__about-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+
+  p {
+    font-family: 'Lato', sans-serif;
+    font-size: 0.93rem;
+    line-height: 1.55;
+    color: #4a5568;
+    margin: 0;
+  }
+
+  strong {
+    color: #1a1e22;
+    font-weight: 700;
+  }
+}
+
+// Checkmark naranja simple (igual que la imagen)
+.casre__about-check {
+  flex-shrink: 0;
+  color: #F37021;
+  font-size: 1rem;
+  font-weight: 900;
+  margin-top: 1px;
+  width: 18px;
+  text-align: center;
+}

@@ -1,0 +1,100 @@
+.not-found-container {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.error-glow {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(239, 68, 68, 0.15) 0%, transparent 70%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.error-card {
+  background: rgba(30, 41, 59, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 48px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2;
+  animation: floatCard 6s ease-in-out infinite;
+}
+
+.error-code {
+  font-size: 7rem;
+  font-weight: 900;
+  line-height: 1;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.05em;
+  background: linear-gradient(135deg, #ef4444 0%, #f43f5e 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 12px rgba(239, 68, 68, 0.2));
+}
+
+.error-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-text-bright, #f8fafc);
+  margin: 0 0 12px 0;
+}
+
+.error-message {
+  font-size: 0.975rem;
+  line-height: 1.6;
+  color: var(--color-text-normal, #cbd5e1);
+  margin: 0 0 32px 0;
+}
+
+.home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--color-primary, #6366f1) 0%, var(--color-primary-dark, #4f46e5) 100%);
+  color: white;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.45);
+    filter: brightness(1.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  .btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@keyframes floatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

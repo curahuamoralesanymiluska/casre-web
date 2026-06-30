@@ -1,0 +1,28 @@
+<section class="casre__services" id="servicios">
+  <div class="casre__services-container">
+    <h2 class="casre__services-title">
+      <span class="casre__services-title--accent">NUESTROS</span>&nbsp;
+      <span class="casre__services-title--white">SERVICIOS</span>
+    </h2>
+
+    <div class="casre__services-grid">
+      @for (s of services; track s.title) {
+        <div class="casre__service-card">
+          <div class="casre__service-card-image">
+            <img
+              [src]="s.imageUrl"
+              [alt]="s.title"
+              loading="lazy"
+              width="360"
+              height="220"
+            />
+          </div>
+          <div class="casre__service-card-body">
+            <h3>{{ s.title }}</h3>
+            <p>{{ s.description }}</p>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

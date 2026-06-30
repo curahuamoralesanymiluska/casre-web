@@ -1,0 +1,232 @@
+// ── CASRE Navbar ─────────────────────────────────────────────────────────────
+// Fondo azul marino SIEMPRE (como en la imagen de referencia)
+// Links blancos · Hover/Activo naranja
+
+.casre__navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: transparent;           // Sin fondo sobre el Hero
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+
+  &--scrolled {
+    background: #0f2d52;             // Azul marino al hacer scroll
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.casre__navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 48px);
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+// ── Logo ─────────────────────────────────────────────────────────────────────
+.casre__navbar-brand {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.casre__navbar-logo {
+  height: clamp(70px, 10vh, 110px); // Un poco más pequeñito
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+// ── Desktop Links ─────────────────────────────────────────────────────────────
+.casre__navbar-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: clamp(8px, 2.5vw, 36px);
+  margin: 0;
+  padding: 0;
+
+  a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+    font-weight: 700;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 2px;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+
+    // Línea subrayado naranja al hover
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #F37021;
+      border-radius: 2px;
+      transition: width 0.25s ease;
+    }
+
+    &:hover {
+      color: #F37021;                // Naranja al hover
+      &::after { width: 100%; }
+    }
+
+    // Link activo (ruta seleccionada)
+    &.casre__navbar-link--active {
+      color: #F37021 !important;     // Naranja cuando está seleccionado
+      &::after { width: 100%; }
+    }
+  }
+}
+
+// ── CTA Button ───────────────────────────────────────────────────────────────
+.casre__navbar-cta {
+  flex-shrink: 0;
+  padding: clamp(8px, 1.2vw, 11px) clamp(14px, 2vw, 24px);
+  background: #ffffff;
+  color: #0f2d52;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.66rem, 1vw, 0.82rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    background: #F37021;
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+}
+
+// ── Hamburger ─────────────────────────────────────────────────────────────────
+.casre__navbar-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1200;
+  flex-shrink: 0;
+
+  span {
+    display: block;
+    width: 26px;
+    height: 2.5px;
+    background: #ffffff;
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.3s ease, opacity 0.2s ease;
+  }
+
+  &--open {
+    span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+  }
+}
+
+// ── Mobile Drawer ─────────────────────────────────────────────────────────────
+.casre__navbar-drawer {
+  position: fixed;
+  inset: 0;
+  background: #0f2d52;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+
+  &--open {
+    transform: translateX(0);
+    pointer-events: all;
+  }
+}
+
+.casre__navbar-drawer-close {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: color 0.2s;
+  &:hover { color: #F37021; }
+}
+
+.casre__navbar-drawer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+
+  a {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    &:hover { color: #F37021; }
+  }
+}
+
+.casre__navbar-drawer-cta {
+  display: block;
+  padding: 14px 36px;
+  background: #F37021;
+  color: #ffffff;
+  border-radius: 6px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease;
+  &:hover { background: #d45e10; }
+}
+
+// ── Breakpoints ───────────────────────────────────────────────────────────────
+@media (min-width: 993px) {
+  .casre__navbar-links      { display: flex; }
+  .casre__navbar-cta        { display: block; }
+  .casre__navbar-hamburger  { display: none; }
+  .casre__navbar-drawer     { display: none !important; }
+}
+
+@media (max-width: 992px) {
+  .casre__navbar-links      { display: none !important; }
+  .casre__navbar-cta        { display: none !important; }
+  .casre__navbar-hamburger  { display: flex; }
+}

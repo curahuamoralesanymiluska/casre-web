@@ -1,0 +1,147 @@
+@import 'variables';
+@import 'mixins';
+
+// Spacing Utilities
+.m-0 { margin: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-6 { margin-bottom: 1.5rem; }
+.mb-8 { margin-bottom: 2rem; }
+
+.p-0 { padding: 0; }
+.p-2 { padding: 0.5rem; }
+.p-4 { padding: 1rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+// Container Layouts
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+              radial-gradient(circle at 10% 80%, rgba(45, 212, 191, 0.05) 0%, transparent 50%);
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px max(24px, 5%);
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.app-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px max(24px, 5%);
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  background: rgba(15, 23, 42, 0.3);
+
+  .tech-stamp {
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    margin-top: 4px;
+    font-size: 0.8rem;
+  }
+}
+
+// Button styles
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--border-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  @include transition-hover(transform, background-color, border-color, box-shadow);
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  // Primary Button
+  &-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-bright);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-light);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    }
+  }
+
+  // Secondary Button
+  &-secondary {
+    background-color: transparent;
+    color: var(--color-text-normal);
+    border-color: rgba(255, 255, 255, 0.15);
+
+    &:hover:not(:disabled) {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: var(--color-text-normal);
+    }
+  }
+
+  // Accent Button
+  &-accent {
+    background-color: var(--color-accent);
+    color: var(--color-text-dark);
+    font-weight: 600;
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-accent-light);
+      box-shadow: 0 4px 12px rgba(45, 212, 191, 0.25);
+    }
+  }
+}
+
+// Micro-animations
+.hover-scale {
+  @include transition-hover(transform, box-shadow);
+  
+  &:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+.text-gradient-indigo {
+  @include text-gradient(var(--color-primary-light), var(--color-accent));
+}
+
+// Grid alignment utilities
+.grid-cols-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

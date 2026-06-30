@@ -1,0 +1,285 @@
+// ── CASRE Quote Form ─────────────────────────────────────────────────────────
+// Fondo: azul muy suave (#eef3fa) · Imagen visible con recuadro CTA · Formulario alineado
+
+:host { display: block; }
+
+.casre__quote {
+  background: #eef3fa;    // Azul muy suave
+  padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px);
+}
+
+// ── Encabezado centrado ───────────────────────────────────────────────────────
+.casre__quote-header {
+  text-align: center;
+  margin-bottom: clamp(30px, 5vw, 50px);
+}
+
+.casre__quote-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 14px;
+
+  &--dark   { color: #1a1e22; }
+  &--accent { color: #F37021; }
+}
+
+.casre__quote-subtitle {
+  font-family: 'Lato', sans-serif;
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+// ── Contenedor Principal Más Grande ───────────────────────────────────────────
+.casre__quote-inner {
+  max-width: 1200px;         // Más grande para que todo quepa cómodamente
+  margin: 0 auto;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(30px, 4vw, 60px);
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid #d1dff0;
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: 0 12px 40px rgba(15, 45, 82, 0.08);
+  overflow: hidden;          // Evita que los hijos se salgan
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 24px;
+  }
+}
+
+// ── Columna Izquierda: Imagen muy visible ─────────────────────────────────────
+.casre__quote-image-col {
+  flex: 1;
+  display: flex;
+  min-width: 0; // Evita blowout en flexbox
+}
+
+.casre__quote-image-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 380px;
+}
+
+.casre__quote-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// Capa superpuesta sutil para dejar ver la imagen
+.casre__quote-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 45, 82, 0.2); // Capa oscura muy tenue
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 30px);
+}
+
+// Recuadro blanco sólido dentro de la imagen
+.casre__quote-cta-box {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 340px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1e22;
+    margin: 0 0 20px 0;
+    line-height: 1.35;
+  }
+}
+
+.casre__quote-wa-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(243, 112, 33, 0.85); // Naranja medio traslúcido
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  transition: background 0.2s, transform 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:hover {
+    background: rgba(243, 112, 33, 1); // Sólido en hover
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(243, 112, 33, 0.3);
+  }
+}
+
+.casre__quote-benefits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.9rem;
+    color: #1a1e22;
+    font-weight: 600;
+  }
+}
+
+.casre__quote-check {
+  color: #F37021; // Check naranja
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.1rem;
+}
+
+// ── Columna Derecha: Formulario ───────────────────────────────────────────────
+.casre__quote-form-col {
+  flex: 1.1; // Ligeramente más espacio para el formulario
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // FUNDAMENTAL: evita que el flex crezca más allá del contenedor y se desborde
+}
+
+.casre__quote-card {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; // Reparte equitativamente la altura
+  gap: 16px;
+  padding: 0; 
+}
+
+// ── Filas de 2 columnas ────────────────────────────────────────────────────────
+.casre__quote-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ── Campos ────────────────────────────────────────────────────────────────────
+.casre__quote-field {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; // Evita overflow en grid
+
+  &--full {
+    grid-column: 1 / -1;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 14px 16px; // un poquito más despacio
+    font-family: 'Lato', sans-serif;
+    font-size: 0.95rem;
+    color: #1a1e22;
+    background: #ffffff;
+    border: 1.5px solid #c8d9ed;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    appearance: none;
+    resize: none;
+    box-sizing: border-box; // Obligatorio para que padding no rompa width
+
+    &::placeholder {
+      color: #94a3b8;
+    }
+
+    &:focus {
+      border-color: #F37021;
+      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.15);
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    height: 100%; // Se estira si es necesario
+    resize: none;
+  }
+}
+
+// ── Botón enviar ──────────────────────────────────────────────────────────────
+.casre__quote-submit {
+  width: 100%;
+  padding: 16px 24px;
+  background: #F37021; // Naranja sólido corporativo
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  box-sizing: border-box;
+
+  &:hover:not(:disabled) {
+    background: #d96118; // Naranja más oscuro al hover
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(243, 112, 33, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+  }
+}
+
+// ── Spinner ───────────────────────────────────────────────────────────────────
+.casre__quote-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: casre-spin 0.7s linear infinite;
+}
+
+@keyframes casre-spin { to { transform: rotate(360deg); } }

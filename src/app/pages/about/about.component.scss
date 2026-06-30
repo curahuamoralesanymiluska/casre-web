@@ -1,0 +1,248 @@
+// ── CASRE About Page ─────────────────────────────────────────────────────────
+
+.casre__about-page {
+  font-family: 'Lato', sans-serif;
+  background: #eef3fa; // Azul bebé
+}
+
+// ── Hero Section ──────────────────────────────────────────────────────────────
+.casre__about-hero {
+  position: relative;
+  height: clamp(350px, 45vh, 550px); // Restaurado para evitar el zoom excesivo ("agrandar")
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-top: -80px;
+  padding-top: 80px;
+}
+
+.casre__about-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center; // Centrado normal
+  }
+}
+
+// Overlay oscuro para que resalte el texto
+.casre__about-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 45, 82, 0.65); // Azul oscuro translúcido
+}
+
+.casre__about-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+  max-width: 800px;
+}
+
+.casre__about-hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.5rem); // Reducido para no verse brusco
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+  text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+
+  .title-white { color: #ffffff; }
+  .title-accent { color: #ec823c; } // Naranja corporativo
+}
+
+.casre__about-hero-subtitle {
+  font-size: clamp(1.05rem, 1.8vw, 1.25rem); // Ligeramente más pequeño
+  color: #ffffff;
+  font-weight: 500;
+  line-height: 1.6;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+// ── Shared Container ──────────────────────────────────────────────────────────
+.casre__about-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px);
+}
+
+// ── Descripción (Split Layout) ───────────────────────────────────────────────
+.casre__about-description {
+  background: transparent;
+  padding: clamp(60px, 8vw, 120px) 0;
+}
+
+.casre__about-split {
+  display: flex;
+  align-items: center;
+  gap: clamp(40px, 6vw, 80px);
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
+}
+
+.casre__about-text-col {
+  flex: 1.1;
+}
+
+.casre__about-image-col {
+  flex: 1;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 45, 82, 0.15);
+  position: relative;
+  min-height: 400px; // para asegurar altura si el texto es corto
+
+  @media (max-width: 900px) {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.casre__about-side-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.casre__about-section-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+
+  .title-dark { color: #0f2d52; } // Azul oscuro corporativo
+  .title-accent { color: #ec823c; }
+}
+
+.casre__about-text-content {
+  p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #4a5568;
+    margin-bottom: 24px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Valores
+.casre__about-values-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0f2d52;
+  margin: 32px 0 16px 0;
+  text-transform: uppercase;
+}
+
+.casre__about-values-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: #2d3748;
+    font-weight: 600;
+
+    i {
+      color: #ec823c;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+// ── Misión y Visión Cards ─────────────────────────────────────────────────────
+.casre__about-cards-section {
+  background: transparent;
+  padding: 0 0 clamp(60px, 8vw, 100px) 0;
+}
+
+.casre__about-grid {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+
+  @media (max-width: 800px) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.casre__about-card {
+  flex: 1;
+  max-width: 480px;
+  padding: 50px 40px;
+  border-radius: 20px;
+  text-align: center;
+  color: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-8px);
+  }
+
+  &--orange {
+    background: #ec823c;
+    box-shadow: 0 15px 40px rgba(236, 130, 60, 0.25);
+
+    &:hover {
+      box-shadow: 0 20px 50px rgba(236, 130, 60, 0.4);
+    }
+  }
+
+  &--blue {
+    background: #0f2d52;
+    box-shadow: 0 15px 40px rgba(15, 45, 82, 0.25);
+
+    &:hover {
+      box-shadow: 0 20px 50px rgba(15, 45, 82, 0.4);
+    }
+  }
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.95;
+  }
+}
+
+.casre__about-card-icon {
+  font-size: 3.5rem;
+  margin-bottom: 24px;
+  line-height: 1;
+  -webkit-text-stroke: 1px #ffffff;
+}

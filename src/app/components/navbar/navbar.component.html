@@ -1,0 +1,42 @@
+<nav class="casre__navbar" [class.casre__navbar--scrolled]="isScrolled()">
+  <div class="casre__navbar-container">
+
+    <a routerLink="/" class="casre__navbar-brand">
+      <img
+        src="/assets/images/logo-casre-hd.png"
+        alt="CASRE INGENIERÍA"
+        class="casre__navbar-logo"
+      />
+    </a>
+
+    <ul class="casre__navbar-links">
+      <li><a routerLink="/"         routerLinkActive="casre__navbar-link--active" [routerLinkActiveOptions]="{exact:true}">Inicio</a></li>
+      <li><a routerLink="/nosotros" routerLinkActive="casre__navbar-link--active">Nosotros</a></li>
+      <li><a routerLink="/servicios" routerLinkActive="casre__navbar-link--active">Servicios</a></li>
+      <li><a routerLink="/contacto" routerLinkActive="casre__navbar-link--active">Contacto</a></li>
+    </ul>
+
+    <a href="#cotizar" class="casre__navbar-cta">Solicitar Cotización</a>
+
+    <button
+      class="casre__navbar-hamburger"
+      [class.casre__navbar-hamburger--open]="menuOpen()"
+      (click)="toggleMenu()"
+      aria-label="Abrir Menú"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div class="casre__navbar-drawer" [class.casre__navbar-drawer--open]="menuOpen()">
+    <button class="casre__navbar-drawer-close" (click)="toggleMenu()" aria-label="Cerrar Menú">✕</button>
+    <ul class="casre__navbar-drawer-links">
+      <li><a routerLink="/"          (click)="toggleMenu()">Inicio</a></li>
+      <li><a routerLink="/nosotros"  (click)="toggleMenu()">Nosotros</a></li>
+      <li><a routerLink="/servicios" (click)="toggleMenu()">Servicios</a></li>
+      <li><a routerLink="/contacto"  (click)="toggleMenu()">Contacto</a></li>
+    </ul>
+    <a href="#cotizar" (click)="toggleMenu()" class="casre__navbar-drawer-cta">Solicitar Cotización</a>
+  </div>
+</nav>

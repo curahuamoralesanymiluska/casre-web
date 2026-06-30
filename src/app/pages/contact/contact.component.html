@@ -1,0 +1,108 @@
+<div class="casre__contact-page">
+
+  <!-- Hero Section -->
+  <section class="casre__contact-hero">
+    <div class="casre__contact-hero-bg">
+      <img src="/assets/images/topografo.webp" alt="Contacto - CASRE INGENIERÍA" />
+      <div class="casre__contact-hero-overlay"></div>
+    </div>
+    <div class="casre__contact-hero-content">
+      <h1 class="casre__contact-hero-title">
+        <span class="title-white">CONTÁC</span><span class="title-accent">TANOS</span>
+      </h1>
+      <p class="casre__contact-hero-subtitle">
+        Estamos listos para asesorarte. Escríbenos y nuestro equipo de ingenieros te responderá a la brevedad.
+      </p>
+    </div>
+  </section>
+
+  <!-- Info Cards Section -->
+  <section class="casre__contact-info">
+    <div class="casre__contact-container casre__contact-cards-grid">
+      
+      <!-- Teléfono / WhatsApp -->
+      <div class="casre__contact-card">
+        <div class="casre__contact-card-icon"><i class="bi bi-whatsapp"></i></div>
+        <h3>WhatsApp / Teléfono</h3>
+        <p>+51 966 613 715</p>
+        <a href="https://wa.me/51966613715" target="_blank">Enviar mensaje</a>
+      </div>
+
+      <!-- Correo -->
+      <div class="casre__contact-card">
+        <div class="casre__contact-card-icon"><i class="bi bi-envelope"></i></div>
+        <h3>Correo Electrónico</h3>
+        <p>casreconsultores&#64;gmail.com</p>
+        <a href="mailto:casreconsultores@gmail.com">Escribir correo</a>
+      </div>
+
+      <!-- Ubicación -->
+      <div class="casre__contact-card">
+        <div class="casre__contact-card-icon"><i class="bi bi-geo-alt"></i></div>
+        <h3>Nuestra Oficina</h3>
+        <p>Asoc. Sector Educación Mz. E, Lt. 1B</p>
+        <span>Atención previa cita</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Formulario y Foto (Fondo Azul) -->
+  <section class="casre__contact-form-section">
+    <div class="casre__contact-container casre__contact-split">
+      
+      <!-- Formulario Izquierda -->
+      <div class="casre__contact-form-col">
+        <h2 class="casre__contact-form-title">Envíanos tu Consulta</h2>
+        <p class="casre__contact-form-desc">Completa el formulario y te enviaremos una propuesta técnica y económica adaptada a tu proyecto.</p>
+        
+        <form class="casre__contact-form">
+          <div class="casre__form-group">
+            <label>Nombres Completos</label>
+            <input type="text" placeholder="Ingresa tu nombre" [(ngModel)]="formData.name" name="name" />
+          </div>
+          <div class="casre__form-group">
+            <label>Número de WhatsApp</label>
+            <input type="tel" placeholder="Ej: 999888777" maxlength="9" [(ngModel)]="formData.phone" name="phone" />
+          </div>
+          <div class="casre__form-group">
+            <label>Servicio de Interés</label>
+            <select [(ngModel)]="formData.service" name="service">
+              <option>Topografía y Geodesia</option>
+              <option>Saneamiento Físico Legal</option>
+              <option>Edificaciones y Licencias</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="casre__form-group">
+            <label>Mensaje o detalle del proyecto</label>
+            <textarea placeholder="Cuéntanos un poco más sobre lo que necesitas..." [(ngModel)]="formData.message" name="message"></textarea>
+          </div>
+          <button type="button" class="casre__form-submit-btn" (click)="sendToWhatsApp()">
+            <i class="bi bi-send-fill"></i> ENVIAR MENSAJE
+          </button>
+        </form>
+      </div>
+
+      <!-- Imagen Derecha -->
+      <div class="casre__contact-image-col">
+        <img src="/assets/img2.webp" alt="Contáctanos" class="casre__contact-side-img" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section class="casre__contact-map">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.123456789!2d-77.0368!3d-12.0431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTLCsDAyJzM1LjIiUyA3N8KwMDInMTIuNSJX!5e0!3m2!1ses-419!2spe!4v1234567890123!5m2!1ses-419!2spe" 
+      width="100%" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </section>
+
+</div>
