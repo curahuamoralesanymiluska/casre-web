@@ -1,8 +1,11 @@
 // ── CASRE Contact Page ────────────────────────────────────────────────────────
 
 .casre__contact-page {
+  width: 100%;
   font-family: 'Lato', sans-serif;
   background: #eef3fa; // Azul bebé como las otras páginas
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 // ── Hero Section ──────────────────────────────────────────────────────────────
@@ -84,22 +87,44 @@
 }
 
 .casre__contact-card {
-  background: #ffffff;
   border-radius: 16px;
   padding: 40px 30px;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border-bottom: 4px solid transparent;
 
+  &:nth-child(odd) {
+    background: #0f2d52; // Azul corporativo
+    border-bottom-color: #F37021;
+    color: #ffffff;
+    
+    .casre__contact-card-icon { color: #ffffff; }
+    h3 { color: #ffffff; }
+    p { color: rgba(255, 255, 255, 0.9); }
+    a, span { color: #F37021; }
+    a:hover { color: #ffffff; }
+  }
+
+  &:nth-child(even) {
+    background: #F37021; // Naranja corporativo
+    border-bottom-color: #0f2d52;
+    color: #ffffff;
+
+    .casre__contact-card-icon { color: #ffffff; }
+    h3 { color: #ffffff; }
+    p { color: rgba(255, 255, 255, 0.9); }
+    a, span { color: #0f2d52; }
+    a:hover { color: #ffffff; }
+  }
+
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-    border-bottom-color: #ec823c;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
   }
 
   .casre__contact-card-icon {
-    font-size: 2.2rem; // No tan grandes, como pidió
+    font-size: 2.2rem;
     color: #0f2d52;
     margin-bottom: 20px;
   }
@@ -121,7 +146,7 @@
 
   a, span {
     font-size: 0.95rem;
-    color: #ec823c;
+    color: #F37021;
     font-weight: 700;
     text-decoration: none;
     text-transform: uppercase;
@@ -137,23 +162,30 @@
 
 // ── Formulario Section (Fondo Azul) ───────────────────────────────────────────
 .casre__contact-form-section {
-  background: #0f2d52; // Fondo azul corporativo
+  background: #eef3fa; // Fondo azul suave como en inicio
   padding: clamp(60px, 8vw, 100px) 0;
 }
 
 .casre__contact-split {
   display: flex;
   align-items: stretch; // Para que la imagen ocupe la misma altura
-  gap: clamp(40px, 6vw, 80px);
+  gap: clamp(30px, 4vw, 60px);
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1.5px solid #d1dff0;
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: 0 12px 40px rgba(15, 45, 82, 0.08);
+  overflow: hidden;
 
   @media (max-width: 900px) {
     flex-direction: column;
+    padding: 24px;
   }
 }
 
 .casre__contact-form-col {
   flex: 1.2;
-  color: #ffffff;
+  color: #1a1e22; // Texto oscuro para el fondo blanco
 }
 
 .casre__contact-form-title {
@@ -161,14 +193,14 @@
   font-size: clamp(2rem, 3vw, 2.5rem);
   font-weight: 900;
   margin-bottom: 16px;
-  color: #ec823c; // Título en naranja para contrastar con azul
+  color: #F37021; // Título en naranja
 }
 
 .casre__contact-form-desc {
   font-size: 1.05rem;
   line-height: 1.6;
   margin-bottom: 40px;
-  opacity: 0.9;
+  color: #4a5568;
 }
 
 // Formulario Estilos
@@ -186,29 +218,28 @@
   label {
     font-size: 0.95rem;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.9);
+    color: #1a1e22;
   }
 
   input, select, textarea {
     width: 100%;
     padding: 16px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05); // Fondo semi-transparente
-    color: #ffffff;
+    border: 1.5px solid #c8d9ed;
+    background: #ffffff;
+    color: #1a1e22;
     font-family: 'Lato', sans-serif;
     font-size: 1rem;
     transition: all 0.3s ease;
 
     &::placeholder {
-      color: rgba(255, 255, 255, 0.5);
+      color: #94a3b8;
     }
 
     &:focus {
       outline: none;
-      border-color: #ec823c;
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 0 0 0 3px rgba(236, 130, 60, 0.2);
+      border-color: #F37021;
+      box-shadow: 0 0 0 3px rgba(243, 112, 33, 0.15);
     }
   }
 
@@ -223,7 +254,7 @@
 }
 
 .casre__form-submit-btn {
-  background: #ec823c; // Naranja
+  background: #F37021; // Naranja
   color: #ffffff;
   border: none;
   padding: 18px;
@@ -237,9 +268,9 @@
   transition: all 0.3s ease;
 
   &:hover {
-    background: #ffffff;
-    color: #0f2d52;
+    background: #d96118; // Naranja más oscuro al hover
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(243, 112, 33, 0.25);
   }
 }
 

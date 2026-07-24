@@ -3,7 +3,7 @@
 
     <a routerLink="/" class="casre__navbar-brand">
       <img
-        src="/assets/images/logo-casre-hd.png"
+        src="assets/images/logo-casre-hd.png"
         alt="CASRE INGENIERÍA"
         class="casre__navbar-logo"
       />
@@ -28,15 +28,24 @@
     </button>
   </div>
 
+  <!-- Mobile Drawer Overlay -->
+  <div class="casre__navbar-overlay" [class.casre__navbar-overlay--open]="menuOpen()" (click)="toggleMenu()"></div>
+
   <!-- Mobile Drawer -->
   <div class="casre__navbar-drawer" [class.casre__navbar-drawer--open]="menuOpen()">
-    <button class="casre__navbar-drawer-close" (click)="toggleMenu()" aria-label="Cerrar Menú">✕</button>
+    <div class="casre__navbar-drawer-header">
+      <img src="assets/images/logo-casre-hd.png" alt="CASRE INGENIERÍA" class="casre__navbar-drawer-logo" />
+    </div>
+    
     <ul class="casre__navbar-drawer-links">
       <li><a routerLink="/"          (click)="toggleMenu()">Inicio</a></li>
       <li><a routerLink="/nosotros"  (click)="toggleMenu()">Nosotros</a></li>
       <li><a routerLink="/servicios" (click)="toggleMenu()">Servicios</a></li>
       <li><a routerLink="/contacto"  (click)="toggleMenu()">Contacto</a></li>
     </ul>
-    <a href="#cotizar" (click)="toggleMenu()" class="casre__navbar-drawer-cta">Solicitar Cotización</a>
+
+    <div class="casre__navbar-drawer-footer">
+      <a href="#cotizar" (click)="toggleMenu()" class="casre__navbar-drawer-cta">Solicitar Cotización</a>
+    </div>
   </div>
 </nav>

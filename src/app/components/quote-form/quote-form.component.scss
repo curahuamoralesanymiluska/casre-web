@@ -4,8 +4,11 @@
 :host { display: block; }
 
 .casre__quote {
+  width: 100%;
   background: #eef3fa;    // Azul muy suave
   padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px);
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 // ── Encabezado centrado ───────────────────────────────────────────────────────

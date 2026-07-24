@@ -2,8 +2,11 @@
 // Tarjetas en azul marino · ícono grande · hover con borde naranja
 
 .casre__why {
+  width: 100%;
   background: #f1f5f9;
   padding: clamp(60px, 8vw, 100px) 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .casre__why-container {
@@ -31,9 +34,10 @@
   gap: 24px;
   flex-wrap: wrap;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+  @media (max-width: 992px) {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
@@ -73,9 +77,10 @@
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     width: 100%;
-    max-width: 340px;
+    max-width: none;
+    margin: 0;
   }
 
   // Brillo sutil en la parte superior
@@ -92,9 +97,10 @@
     transition: opacity 0.3s ease;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 992px) {
     width: 100%;
-    max-width: 340px;
+    max-width: none;
+    margin: 0;
   }
 
   &:hover {

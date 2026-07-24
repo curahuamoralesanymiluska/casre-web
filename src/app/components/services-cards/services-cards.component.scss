@@ -2,8 +2,11 @@
 // Fondo: azul marino corporativo #0f2d52
 
 .casre__services {
-  background: #0f2d52;    // Azul marino — mismo que navbar al bajar
+  width: 100%;
+  background: #0f2d52;
   padding: clamp(60px, 8vw, 100px) 0;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 .casre__services-container {
@@ -31,8 +34,9 @@
   gap: 32px;
 
   @media (max-width: 992px) {
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
   }
 }
 
@@ -46,7 +50,8 @@
 
   @media (max-width: 992px) {
     width: 100%;
-    max-width: 400px;
+    max-width: none;
+    margin: 0;
   }
 
   &:hover {

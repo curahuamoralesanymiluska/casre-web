@@ -18,11 +18,11 @@ export class DataService {
   };
 
   readonly services: ServiceItem[] = [
-    { title: 'Topografía y Geodesia', description: 'Levantamiento con uso de Sistema GNSS.', imageUrl: 'assets/img1.jpg' },
-    { title: 'Fotogrametría', description: 'Cartografía digital mediante drones.', imageUrl: 'assets/img2.jpg' },
-    { title: 'Topografía LiDAR', description: 'Modelos de alta precisión láser.', imageUrl: 'assets/img3.jpg' },
-    { title: 'Saneamiento Físico Legal', description: 'Titulación de predios rurales.', imageUrl: 'assets/img4.jpg' },
-    { title: 'Primera Inscripción', description: 'Gestión registral de dominio.', imageUrl: 'assets/img5.jpg' }
+    { title: 'Topografía y Geodesia', description: 'Levantamiento con uso de Sistema GNSS.', imageUrl: 'assets/img1.webp' },
+    { title: 'Fotogrametría', description: 'Cartografía digital mediante drones.', imageUrl: 'assets/img2.webp' },
+    { title: 'Topografía LiDAR', description: 'Modelos de alta precisión láser.', imageUrl: 'assets/img3.webp' },
+    { title: 'Saneamiento Físico Legal', description: 'Titulación de predios rurales.', imageUrl: 'assets/img4.webp' },
+    { title: 'Primera Inscripción', description: 'Gestión registral de dominio.', imageUrl: 'assets/img5.webp' }
   ];
 
   getWhatsAppUrl(): string {

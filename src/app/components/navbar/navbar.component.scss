@@ -17,6 +17,22 @@
   }
 }
 
+// ── Overlay del Mobile Drawer ────────────────────────────────────────────────
+.casre__navbar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+
+  &--open {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
 .casre__navbar-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -36,7 +52,7 @@
 }
 
 .casre__navbar-logo {
-  height: clamp(70px, 10vh, 110px); // Un poco más pequeñito
+  height: 48px;
   width: auto;
   object-fit: contain;
   transition: transform 0.3s ease;
@@ -150,33 +166,50 @@
 // ── Mobile Drawer ─────────────────────────────────────────────────────────────
 .casre__navbar-drawer {
   position: fixed;
-  inset: 0;
-  background: #0f2d52;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 340px;
+  background: #0f2d52; // Vuelve al azul marino
   z-index: 1100;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
+  padding: 24px;
+  box-shadow: -5px 0 25px rgba(0,0,0,0.5); // Sombra más oscura
   transform: translateX(100%);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s;
   pointer-events: none;
+  visibility: hidden;
 
   &--open {
     transform: translateX(0);
     pointer-events: all;
+    visibility: visible;
   }
 }
 
+.casre__navbar-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+.casre__navbar-drawer-logo {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
 .casre__navbar-drawer-close {
-  position: absolute;
-  top: 22px;
-  right: 24px;
   background: none;
   border: none;
-  color: rgba(255,255,255,0.7);
+  color: #ffffff; // Blanco para contrastar con azul
   font-size: 1.6rem;
   cursor: pointer;
+  padding: 4px;
   transition: color 0.2s;
   &:hover { color: #F37021; }
 }
@@ -187,34 +220,55 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 28px;
+  width: 100%;
+
+  li {
+    width: 100%;
+  }
 
   a {
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(1.4rem, 5vw, 2rem);
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #ffffff;
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    font-family: 'Lato', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff; // Texto blanco
     text-decoration: none;
-    transition: color 0.2s ease;
-    &:hover { color: #F37021; }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); // Divisor sutil
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    
+    &:hover { 
+      color: #F37021; 
+      padding-left: 5px;
+    }
   }
 }
 
+.casre__navbar-drawer-footer {
+  margin-top: auto; // Empuja el botón hacia abajo si hay espacio
+  padding-top: 40px;
+  width: 100%;
+  text-align: center; // Centra el botón
+}
+
 .casre__navbar-drawer-cta {
-  display: block;
-  padding: 14px 36px;
+  display: inline-block; // Para que no ocupe 100% y se centre
+  padding: 16px 32px;
   background: #F37021;
   color: #ffffff;
-  border-radius: 6px;
+  border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  text-transform: uppercase;
+  text-transform: none; // Como en la referencia
   text-decoration: none;
-  transition: background 0.2s ease;
-  &:hover { background: #d45e10; }
+  transition: background 0.2s ease, transform 0.2s ease;
+  
+  &:hover { 
+    background: #d45e10; 
+    transform: translateY(-2px);
+  }
 }
 
 // ── Breakpoints ───────────────────────────────────────────────────────────────
