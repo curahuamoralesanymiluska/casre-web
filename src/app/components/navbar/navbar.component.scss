@@ -1,6 +1,5 @@
 // ── CASRE Navbar ─────────────────────────────────────────────────────────────
-// Transparente con letras blancas arriba en pantalla grande · Fondo blanco al scroll
-// En móviles con difuminado blanco y menú azul corporativo
+// Transparente con letras blancas arriba · Fondo blanco al hacer scroll
 
 .casre__navbar {
   position: fixed;
@@ -11,13 +10,6 @@
   background: transparent;
   box-shadow: none;
   transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.3s ease;
-
-  @media (max-width: 992px) {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 1px 10px rgba(15, 45, 82, 0.06);
-  }
 
   // Fondo blanco sólido al hacer scroll
   &--scrolled {
@@ -46,6 +38,10 @@
         background: #F37021;
         color: #ffffff;
       }
+    }
+
+    .casre__navbar-hamburger span {
+      background: #0f2d52;
     }
   }
 }
@@ -189,10 +185,11 @@
     display: block;
     width: 26px;
     height: 2.5px;
-    background: #0f2d52;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     border-radius: 2px;
     transform-origin: center;
-    transition: transform 0.3s ease, opacity 0.2s ease;
+    transition: transform 0.3s ease, opacity 0.2s ease, background 0.3s ease;
   }
 
   &--open {
