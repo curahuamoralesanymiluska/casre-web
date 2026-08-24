@@ -54,8 +54,10 @@
 .casre__navbar-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(15, 45, 82, 0.5);
-  z-index: 1050;
+  background: rgba(10, 25, 45, 0.65);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1500;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -206,18 +208,23 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 80%;
-  max-width: 340px;
-  background: #ffffff;
-  z-index: 1100;
+  width: 85%;
+  max-width: 320px;
+  height: 100vh;
+  height: 100dvh;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  opacity: 1 !important;
+  z-index: 2000;
   display: flex;
   flex-direction: column;
-  padding: 24px;
-  box-shadow: -5px 0 30px rgba(15, 45, 82, 0.2);
+  padding: 24px 20px;
+  box-shadow: -8px 0 35px rgba(0, 0, 0, 0.3);
   transform: translateX(100%);
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s;
   pointer-events: none;
   visibility: hidden;
+  box-sizing: border-box;
 
   &--open {
     transform: translateX(0);
@@ -230,13 +237,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 24px;
   width: 100%;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #edf2f7;
 }
 
 .casre__navbar-drawer-logo {
-  height: 46px;
-  max-width: 200px;
+  height: 42px;
+  max-width: 180px;
   width: auto;
   object-fit: contain;
 }
@@ -245,11 +254,23 @@
   background: none;
   border: none;
   color: #0f2d52;
-  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  padding: 4px;
-  transition: color 0.2s;
-  &:hover { color: #F37021; }
+  padding: 6px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+  
+  &:hover {
+    color: #F37021;
+    background: #f8fafc;
+  }
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 .casre__navbar-drawer-links {
@@ -267,19 +288,20 @@
   a {
     display: block;
     width: 100%;
-    padding: 16px 0;
+    padding: 14px 4px;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: 0.92rem;
+    font-weight: 500;                  // Letras más delgadas
     color: #0f2d52;
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-bottom: 1px solid rgba(15, 45, 82, 0.08);
-    transition: color 0.2s ease, padding-left 0.2s ease;
+    border-bottom: 1px solid #f1f5f9;
+    transition: color 0.2s ease, padding-left 0.2s ease, font-weight 0.2s ease;
     
     &:hover { 
       color: #F37021; 
+      font-weight: 600;
       padding-left: 6px;
     }
   }
@@ -301,13 +323,13 @@
   width: 100%;
   box-sizing: border-box;
   text-align: center;
-  padding: 15px 20px;
+  padding: 14px 20px;
   background: #0f2d52;
   color: #ffffff;
   border-radius: 8px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 0.88rem;
-  font-weight: 800;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   text-decoration: none;

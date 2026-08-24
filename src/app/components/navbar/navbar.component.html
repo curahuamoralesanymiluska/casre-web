@@ -29,23 +29,29 @@
   </div>
 
   <!-- Mobile Drawer Overlay -->
-  <div class="casre__navbar-overlay" [class.casre__navbar-overlay--open]="menuOpen()" (click)="toggleMenu()"></div>
+  <div class="casre__navbar-overlay" [class.casre__navbar-overlay--open]="menuOpen()" (click)="closeMenu()"></div>
 
   <!-- Mobile Drawer -->
   <div class="casre__navbar-drawer" [class.casre__navbar-drawer--open]="menuOpen()">
     <div class="casre__navbar-drawer-header">
       <img src="assets/images/logo-casre-hd.png" alt="CASRE INGENIERÍA" class="casre__navbar-drawer-logo" />
+      <button class="casre__navbar-drawer-close" (click)="closeMenu()" aria-label="Cerrar Menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
     
     <ul class="casre__navbar-drawer-links">
-      <li><a routerLink="/"          (click)="toggleMenu()">Inicio</a></li>
-      <li><a routerLink="/nosotros"  (click)="toggleMenu()">Nosotros</a></li>
-      <li><a routerLink="/servicios" (click)="toggleMenu()">Servicios</a></li>
-      <li><a routerLink="/contacto"  (click)="toggleMenu()">Contacto</a></li>
+      <li><a routerLink="/"          (click)="closeMenu()">Inicio</a></li>
+      <li><a routerLink="/nosotros"  (click)="closeMenu()">Nosotros</a></li>
+      <li><a routerLink="/servicios" (click)="closeMenu()">Servicios</a></li>
+      <li><a routerLink="/contacto"  (click)="closeMenu()">Contacto</a></li>
     </ul>
 
     <div class="casre__navbar-drawer-footer">
-      <a href="#cotizar" (click)="toggleMenu()" class="casre__navbar-drawer-cta">Solicitar Cotización</a>
+      <a href="#cotizar" (click)="closeMenu()" class="casre__navbar-drawer-cta">Solicitar Cotización</a>
     </div>
   </div>
 </nav>
