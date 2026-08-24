@@ -1,6 +1,6 @@
 // ── CASRE Navbar ─────────────────────────────────────────────────────────────
-// Links en azul corporativo (#0f2d52) · Hover/activo en naranja (#F37021)
-// Fondo blanco al hacer scroll
+// Transparente con letras blancas arriba en pantalla grande · Fondo blanco al scroll
+// En móviles con difuminado blanco y menú azul corporativo
 
 .casre__navbar {
   position: fixed;
@@ -8,20 +8,44 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 1px 10px rgba(15, 45, 82, 0.05);
+  background: transparent;
+  box-shadow: none;
   transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.3s ease;
+
+  @media (max-width: 992px) {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 1px 10px rgba(15, 45, 82, 0.06);
+  }
 
   // Fondo blanco sólido al hacer scroll
   &--scrolled {
-    background: #ffffff;
-    backdrop-filter: none;
-    box-shadow: 0 4px 20px rgba(15, 45, 82, 0.12);
+    background: #ffffff !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 4px 20px rgba(15, 45, 82, 0.12) !important;
 
     .casre__navbar-logo {
       height: 50px;
+    }
+
+    .casre__navbar-links a {
+      color: #0f2d52;
+      text-shadow: none;
+
+      &:hover { color: #F37021; }
+      &.casre__navbar-link--active { color: #F37021 !important; }
+    }
+
+    .casre__navbar-cta {
+      background: #0f2d52;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(15, 45, 82, 0.2);
+
+      &:hover {
+        background: #F37021;
+        color: #ffffff;
+      }
     }
   }
 }
@@ -85,7 +109,8 @@
     font-family: 'Montserrat', sans-serif;
     font-size: clamp(0.75rem, 1.1vw, 0.9rem);
     font-weight: 700;
-    color: #0f2d52;                    // Azul corporativo
+    color: #ffffff;                    // Blanco por defecto arriba sobre Hero oscuro
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     padding: 8px 2px;
@@ -124,8 +149,8 @@
 .casre__navbar-cta {
   flex-shrink: 0;
   padding: clamp(10px, 1.2vw, 12px) clamp(18px, 2vw, 26px);
-  background: #0f2d52;               // Azul corporativo
-  color: #ffffff;                    // Letra blanca
+  background: #ffffff;               // Blanco arriba sobre Hero oscuro
+  color: #0f2d52;                    // Letra azul
   border: none;
   border-radius: 6px;
   font-family: 'Montserrat', sans-serif;
@@ -134,7 +159,7 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(15, 45, 82, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   transition: background 0.25s ease, color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
 
   &:hover {
