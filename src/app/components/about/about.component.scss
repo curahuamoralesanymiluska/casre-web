@@ -1,11 +1,11 @@
 // ── CASRE About ──────────────────────────────────────────────────────────────
-// Igual que la imagen de referencia: fondo blanco, SOBRE naranja, NOSOTROS oscuro
+// Fondo suave original (#eef3fa) · SOBRE naranja · NOSOTROS oscuro
 
 .casre__about {
   display: block !important;
   visibility: visible !important;
   width: 100%;
-  background: #eef3fa; // Azul muy suave, igual que el formulario
+  background: #eef3fa; // Azul suave original
   padding: clamp(60px, 7vw, 100px) 0;
   overflow: hidden;
 }
@@ -29,7 +29,7 @@
   flex: 1;
   max-width: 500px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 
@@ -77,7 +77,7 @@
   &--oscuro  { color: #1a1e22; }           // NOSOTROS → negro/muy oscuro
 }
 
-// ── Subtítulo naranja uppercase (como en la imagen) ───────────────────────────
+// ── Subtítulo naranja uppercase ───────────────────────────────────────────────
 .casre__about-subtitle {
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(0.8rem, 1.2vw, 0.95rem);
@@ -96,7 +96,7 @@
   margin: 0 0 28px 0;
 }
 
-// ── Features: lista simple con ✓ naranja (como en la imagen) ─────────────────
+// ── Features: lista simple con ✓ naranja ──────────────────────────────────────
 .casre__about-features {
   list-style: none;
   padding: 0;
@@ -126,7 +126,7 @@
   }
 }
 
-// Checkmark naranja simple (igual que la imagen)
+// Checkmark naranja simple
 .casre__about-check {
   flex-shrink: 0;
   color: #F37021;

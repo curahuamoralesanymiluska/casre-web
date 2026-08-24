@@ -1,11 +1,11 @@
 // ── CASRE Quote Form ─────────────────────────────────────────────────────────
-// Fondo: azul muy suave (#eef3fa) · Imagen visible con recuadro CTA · Formulario alineado
+// Fondo: azul corporativo (#0f2d52) · Tarjeta interior blanca con formulario y CTA
 
 :host { display: block; }
 
 .casre__quote {
   width: 100%;
-  background: #eef3fa;    // Azul muy suave
+  background: #0f2d52;    // Fondo azul corporativo
   padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px);
   overflow: hidden;
   box-sizing: border-box;
@@ -26,14 +26,14 @@
   line-height: 1.1;
   margin-bottom: 14px;
 
-  &--dark   { color: #1a1e22; }
-  &--accent { color: #F37021; }
+  &--dark   { color: #ffffff; } // Blanco sobre fondo azul
+  &--accent { color: #F37021; } // Naranja corporativo
 }
 
 .casre__quote-subtitle {
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
-  color: #4a5568;
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.6;
 }
 

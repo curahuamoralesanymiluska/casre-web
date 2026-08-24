@@ -18,11 +18,11 @@ export class DataService {
   };
 
   readonly services: ServiceItem[] = [
-    { title: 'Topografía y Geodesia', description: 'Levantamiento con uso de Sistema GNSS.', imageUrl: 'assets/img1.webp' },
-    { title: 'Fotogrametría', description: 'Cartografía digital mediante drones.', imageUrl: 'assets/img2.webp' },
-    { title: 'Topografía LiDAR', description: 'Modelos de alta precisión láser.', imageUrl: 'assets/img3.webp' },
-    { title: 'Saneamiento Físico Legal', description: 'Titulación de predios rurales.', imageUrl: 'assets/img4.webp' },
-    { title: 'Primera Inscripción', description: 'Gestión registral de dominio.', imageUrl: 'assets/img5.webp' }
+    { title: 'Topografía y Geodesia', description: 'Levantamiento de alta precisión con uso de Sistema GNSS y Drones.', imageUrl: 'assets/img-fotogrametria-dron.webp' },
+    { title: 'Saneamiento Físico Legal', description: 'Diagnóstico, titulación y saneamiento integral de predios.', imageUrl: 'assets/img-saneamiento-campo.webp' },
+    { title: 'Edificaciones y Licencias', description: 'Declaratoria de fábrica, habilitación urbana y licencias.', imageUrl: 'assets/img-edificaciones-dron.webp' },
+    { title: 'Recursos Hídricos', description: 'Estudios de balance hídrico, fajas marginales y licencias de uso de agua.', imageUrl: 'assets/img-recursos-hidricos.webp' },
+    { title: 'Gestión del Territorio', description: 'Evaluación de Riesgos (EVAR) y Análisis de Riesgos (AdR) territoriales.', imageUrl: 'assets/img-gestion-territorio.webp' }
   ];
 
   getWhatsAppUrl(): string {
