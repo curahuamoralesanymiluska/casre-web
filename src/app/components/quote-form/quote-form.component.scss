@@ -25,6 +25,15 @@
   letter-spacing: -0.01em;
   line-height: 1.1;
   margin-bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+
+  span {
+    display: inline-block;
+  }
 
   &--dark   { color: #ffffff; } // Blanco sobre fondo azul
   &--accent { color: #F37021; } // Naranja corporativo

@@ -18,10 +18,19 @@
 .casre__services-title {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.85rem, 4vw, 3rem);
   font-weight: 800;
   margin-bottom: clamp(40px, 6vw, 70px);
   line-height: 1.1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+
+  span {
+    display: inline-block;
+  }
 
   &--accent { color: #F37021; }   // Naranja → 'NUESTROS'
   &--white  { color: #ffffff; }   // Blanco  → 'SERVICIOS'

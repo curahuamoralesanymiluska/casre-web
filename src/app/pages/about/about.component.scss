@@ -49,13 +49,21 @@
 
 .casre__about-hero-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(1.75rem, 5.5vw, 3.2rem);
+  font-size: clamp(1.85rem, 5.5vw, 3.2rem);
   font-weight: 900;
   text-transform: uppercase;
   margin: 0 0 14px 0;
   line-height: 1.15;
   text-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  word-break: break-word;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+
+  span {
+    display: inline-block;
+  }
 
   .title-white { color: #ffffff; }
   .title-accent { color: #ec823c; } // Naranja corporativo
@@ -127,10 +135,22 @@
 
 .casre__about-section-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 900;
   text-transform: uppercase;
   margin-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3em;
+
+  @media (max-width: 900px) {
+    justify-content: center;
+  }
+
+  span {
+    display: inline-block;
+  }
 
   .title-dark { color: #0f2d52; } // Azul oscuro corporativo
   .title-accent { color: #ec823c; }

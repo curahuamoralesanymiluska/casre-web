@@ -23,6 +23,15 @@
   text-transform: uppercase;
   margin-bottom: clamp(36px, 5vw, 60px);
   line-height: 1.1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+
+  span {
+    display: inline-block;
+  }
 
   &--dark   { color: #1a1e22; }   // POR QUÉ → oscuro
   &--accent { color: #F37021; }   // ELEGIRNOS → naranja
