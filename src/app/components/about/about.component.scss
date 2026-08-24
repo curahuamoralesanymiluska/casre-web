@@ -5,22 +5,26 @@
   display: block !important;
   visibility: visible !important;
   width: 100%;
+  max-width: 100%;
   background: #eef3fa; // Azul suave original
-  padding: clamp(60px, 7vw, 100px) 0;
+  padding: clamp(50px, 7vw, 90px) 0;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .casre__about-container {
   max-width: 1260px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 48px);
+  padding: 0 clamp(16px, 5vw, 48px);
   display: flex;
   align-items: center;
-  gap: clamp(40px, 5vw, 70px);
+  gap: clamp(32px, 5vw, 70px);
+  box-sizing: border-box;
 
   @media (max-width: 900px) {
     flex-direction: column;
-    gap: 36px;
+    gap: 30px;
   }
 }
 
@@ -35,7 +39,7 @@
 
   @media (max-width: 900px) {
     max-width: 100%;
-    height: 280px;
+    height: 260px;
   }
 }
 
@@ -47,31 +51,34 @@
   min-height: 380px;
 
   @media (max-width: 900px) {
-    min-height: 280px;
+    min-height: 260px;
   }
 }
 
 // ── Contenido ─────────────────────────────────────────────────────────────────
 .casre__about-content {
   flex: 1.2;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 
   @media (max-width: 900px) {
-    text-align: center;
-    align-items: center;
+    text-align: left;
+    align-items: flex-start;
   }
 }
 
 // ── Título: SOBRE (naranja) + NOSOTROS (azul muy oscuro) ──────────────────────
 .casre__about-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-size: clamp(1.85rem, 5vw, 3.2rem);
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: -0.01em;
-  line-height: 1;
-  margin: 0 0 16px 0;
+  line-height: 1.15;
+  margin: 0 0 14px 0;
+  word-break: break-word;
 
   &--naranja { color: #F37021; }           // SOBRE → naranja
   &--oscuro  { color: #1a1e22; }           // NOSOTROS → negro/muy oscuro
@@ -80,20 +87,22 @@
 // ── Subtítulo naranja uppercase ───────────────────────────────────────────────
 .casre__about-subtitle {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(0.8rem, 1.2vw, 0.95rem);
+  font-size: clamp(0.82rem, 2vw, 0.95rem);
   font-weight: 700;
   color: #F37021;                          // Naranja
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  margin: 0 0 22px 0;
+  letter-spacing: 0.08em;
+  margin: 0 0 18px 0;
+  line-height: 1.4;
 }
 
 .casre__about-desc {
   font-family: 'Lato', sans-serif;
-  font-size: 0.97rem;
-  line-height: 1.75;
+  font-size: clamp(0.92rem, 1.8vw, 0.98rem);
+  line-height: 1.7;
   color: #4a5568;
-  margin: 0 0 28px 0;
+  margin: 0 0 24px 0;
+  text-align: left;
 }
 
 // ── Features: lista simple con ✓ naranja ──────────────────────────────────────
@@ -103,21 +112,24 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  width: 100%;
 }
 
 .casre__about-feature {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+  width: 100%;
 
   p {
     font-family: 'Lato', sans-serif;
-    font-size: 0.93rem;
+    font-size: clamp(0.88rem, 1.6vw, 0.94rem);
     line-height: 1.55;
     color: #4a5568;
     margin: 0;
     text-align: left;
+    flex: 1;
   }
 
   strong {
