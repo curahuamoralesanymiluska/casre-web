@@ -1,21 +1,25 @@
-<section class="casre__services" id="servicios">
+<section class="casre__services casre-topo" id="servicios">
   <div class="casre__services-container">
-    <h2 class="casre__services-title">
+    <h2 class="casre__services-title" appReveal="words">
       <span class="casre__services-title--accent">NUESTROS</span>
       <span class="casre__services-title--white">SERVICIOS</span>
     </h2>
 
     <div class="casre__services-grid">
-      @for (s of services; track s.title) {
-        <div class="casre__service-card">
+      @for (s of services; track s.title; let i = $index) {
+        <!-- --i escalona la entrada por columna; la imagen lo hereda para su cortina -->
+        <div class="casre__service-card" appReveal appTilt [style.--i]="i % 3">
+          <span class="casre__service-card-glare" aria-hidden="true"></span>
           <div class="casre__service-card-image">
             <img
               [src]="s.imageUrl"
               [alt]="s.title"
+              appReveal="curtain"
               loading="lazy"
               width="360"
               height="220"
             />
+            <span class="casre__service-card-icon"><app-icon [name]="s.icon" /></span>
           </div>
           <div class="casre__service-card-body">
             <h3>{{ s.title }}</h3>

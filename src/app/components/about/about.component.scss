@@ -9,6 +9,7 @@
   background: #eef3fa; // Azul suave original
   padding: clamp(50px, 7vw, 90px) 0;
   overflow: hidden;
+  overflow: clip; // clip no crea contenedor de scroll (necesario para animation-timeline: view())
   box-sizing: border-box;
 }
 
@@ -35,6 +36,7 @@
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
+  overflow: clip;
   box-shadow: 0 8px 30px rgba(0,0,0,0.12);
 
   @media (max-width: 900px) {

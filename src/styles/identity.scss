@@ -1,0 +1,191 @@
+// ══════════════════════════════════════════════════════════════════════════════
+// CASRE — Identidad topográfica y animaciones (estilos globales)
+// Archivo independiente de styles.scss (que no está incluido en angular.json),
+// para no alterar el aspecto actual del sitio.
+// ══════════════════════════════════════════════════════════════════════════════
+:root {
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:   cubic-bezier(0.22, 0.61, 0.36, 1);
+  --ease-expo:  cubic-bezier(0.16, 1, 0.3, 1);
+  --radius-sm:  6px;
+  --shadow-md:  0 4px 16px rgba(0, 0, 0, 0.1);
+
+  // Curvas de nivel (SVG inline, usado como máscara para poder colorearlo)
+  --topo-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800' preserveAspectRatio='xMidYMid slice'%3E%3Cpath d='M538 700C538 703 535 705 533 707C531 710 528 712 525 712C522 713 519 712 515 712C511 712 505 712 502 710C500 708 500 703 501 700C502 697 505 695 508 693C510 691 513 691 516 690C519 688 523 684 526 684C530 685 533 689 535 691C537 694 539 697 538 700ZM570 700C569 707 561 715 555 720C549 726 542 731 533 733C525 735 517 733 507 732C497 731 478 733 472 728C466 723 466 708 469 700C471 692 481 686 487 681C494 676 500 675 508 671C517 667 528 657 537 658C546 659 555 669 561 676C566 683 571 693 570 700ZM603 700C601 712 588 725 578 734C568 742 555 750 542 753C528 757 515 754 499 753C482 752 451 755 441 746C431 737 433 713 437 700C441 687 456 677 467 669C478 661 487 658 500 652C514 646 534 630 548 631C562 633 577 650 586 662C595 673 604 688 603 700ZM636 700C634 717 615 735 600 747C586 759 568 768 550 773C531 777 513 775 490 774C467 772 423 777 409 764C395 752 400 718 406 700C413 682 432 669 447 657C461 646 474 641 492 632C511 624 539 603 558 605C578 608 598 631 611 647C624 663 638 683 636 700ZM302 250C302 255 297 260 293 263C289 266 283 267 277 268C272 269 266 271 262 270C257 269 254 265 250 262C246 258 239 254 239 250C238 246 241 238 245 235C249 232 257 231 262 231C267 231 271 234 276 235C282 236 290 233 294 236C299 238 302 245 302 250ZM341 250C340 260 330 273 321 280C312 287 298 289 287 291C275 294 262 297 252 295C242 292 234 284 225 276C216 269 201 260 199 250C197 240 204 224 213 217C222 210 241 208 253 207C264 207 272 214 284 216C296 217 316 212 325 218C334 224 341 240 341 250ZM378 250C377 266 363 285 349 296C336 307 314 311 296 315C279 319 258 323 242 319C226 315 215 302 201 290C187 279 162 265 159 250C156 235 168 210 182 199C196 188 225 185 244 185C262 184 273 193 292 196C311 199 341 191 356 200C370 209 380 234 378 250ZM415 250C414 272 396 298 378 313C360 328 331 334 306 339C282 344 254 348 232 342C211 337 196 319 177 304C158 288 122 270 118 250C114 230 132 195 151 181C171 166 210 164 235 163C259 162 275 173 300 176C326 179 368 170 387 182C406 194 417 228 415 250ZM451 250C449 278 429 310 407 329C384 348 347 358 316 364C286 370 250 373 223 365C196 358 178 337 154 318C129 298 82 276 76 250C70 224 95 181 120 163C145 145 195 143 226 141C257 140 276 151 309 155C341 159 395 148 418 164C442 180 453 222 451 250ZM486 250C484 283 462 323 436 346C409 370 364 382 327 389C290 396 247 397 214 388C181 378 160 354 130 331C100 309 40 281 33 250C27 219 60 167 90 146C121 124 180 122 217 120C255 118 279 129 317 134C356 138 421 126 450 146C478 165 488 217 486 250ZM520 250C518 289 496 336 466 364C435 391 380 407 337 415C293 422 244 421 205 409C167 397 142 372 106 345C70 319 -3 286 -11 250C-18 214 24 153 61 128C97 103 165 102 209 100C253 97 281 107 326 111C372 116 448 105 480 128C513 151 523 211 520 250ZM959 560C958 563 956 565 953 568C951 570 950 573 946 575C943 577 936 580 932 579C928 578 925 573 923 570C922 567 924 563 924 560C924 557 924 554 925 551C927 549 930 544 933 543C937 542 943 543 947 544C951 545 955 547 957 550C959 553 959 557 959 560ZM988 560C986 568 979 573 974 580C969 586 965 594 956 599C947 604 930 612 920 609C910 607 901 593 898 585C894 576 898 568 899 560C899 552 898 545 902 538C906 531 913 520 923 517C932 514 946 516 957 519C967 522 979 527 985 534C990 541 990 552 988 560ZM1017 560C1013 572 1003 581 994 591C986 602 980 616 966 624C951 632 923 643 908 639C892 635 879 612 873 599C867 586 872 573 873 560C874 547 871 535 878 524C884 512 897 497 912 491C927 486 950 489 967 494C984 498 1004 507 1013 518C1021 529 1020 548 1017 560ZM1045 560C1040 577 1025 588 1014 603C1003 618 996 638 976 649C956 660 917 675 896 669C874 663 857 631 849 613C841 595 846 577 847 560C848 543 844 525 854 510C863 494 881 474 902 467C923 460 954 463 977 468C1000 474 1030 486 1041 501C1053 516 1049 543 1045 560ZM1072 560C1066 582 1048 595 1034 615C1020 634 1012 661 987 675C962 689 911 707 884 699C857 691 836 650 825 627C814 604 819 582 820 560C820 538 817 515 829 496C841 476 866 451 892 443C919 434 958 436 988 443C1017 450 1057 465 1071 484C1085 504 1078 538 1072 560ZM1098 560C1090 587 1070 602 1054 626C1037 650 1028 684 997 701C967 718 904 738 872 728C839 718 815 668 802 640C788 612 791 586 792 560C792 534 790 505 805 481C820 458 851 430 883 419C915 408 962 409 998 417C1034 425 1084 443 1100 467C1117 491 1106 533 1098 560ZM1124 560C1114 591 1093 610 1073 638C1054 666 1044 708 1008 728C973 748 898 769 860 757C822 744 795 687 779 654C762 621 763 591 763 560C763 529 762 495 781 467C799 440 835 409 873 396C911 383 966 382 1009 391C1052 399 1111 421 1130 450C1149 478 1133 529 1124 560ZM1148 560C1137 596 1115 617 1094 649C1072 682 1060 733 1020 756C979 778 893 800 849 785C805 770 775 705 756 667C736 630 733 596 733 560C733 524 735 485 757 454C779 423 821 389 864 374C908 359 971 354 1020 363C1069 373 1139 399 1160 432C1181 465 1159 524 1148 560Z' fill='none' stroke='black' stroke-width='1.2'/%3E%3C/svg%3E");
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// Revelado al hacer scroll (RevealDirective)
+// Solo anima opacity, translate/scale y clip-path. Los estados ocultos viven dentro de
+// `prefers-reduced-motion: no-preference`: con movimiento reducido todo se ve directo.
+// `translate` y `scale` (propiedades individuales) se combinan con los `transform` de
+// hover de cada componente sin pisarlos.
+// ══════════════════════════════════════════════════════════════════════════════
+@keyframes reveal-up {
+  from { opacity: 0; translate: 0 40px; }
+  to   { opacity: 1; translate: 0 0; }
+}
+
+// Cortina de abajo hacia arriba
+@keyframes reveal-curtain {
+  from { clip-path: inset(100% 0 0 0); scale: 1.14; }
+  to   { clip-path: inset(0 0 0 0);    scale: 1; }
+}
+
+// Cortina de izquierda a derecha
+@keyframes reveal-curtain-left {
+  from { clip-path: inset(0 100% 0 0); scale: 1.14; }
+  to   { clip-path: inset(0 0 0 0);    scale: 1; }
+}
+
+@keyframes reveal-word {
+  from { translate: 0 115%; }
+  to   { translate: 0 0; }
+}
+
+// Máscara de cada palabra (la crea la variante 'words'); el padding deja respirar tildes y "¿"
+.reveal__word {
+  display: inline-block;
+  overflow: hidden;
+  overflow: clip;
+  vertical-align: top;
+  padding: 0.1em 0.04em 0.12em;
+  margin: -0.1em -0.04em -0.12em;
+}
+
+.reveal__word-inner {
+  display: inline-block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  // ── Animaciones ligadas al scroll (CSS puro) ──
+  // El `animation` abreviado reinicia animation-timeline, por eso va siempre antes.
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up var(--ease-out) both;
+      animation-timeline: view();
+      animation-range: cover calc(var(--i, 0) * 4%) cover calc(28% + var(--i, 0) * 4%);
+    }
+
+    .reveal--curtain      { animation-name: reveal-curtain; }
+    .reveal--curtain-left { animation-name: reveal-curtain-left; }
+
+    .reveal--words {
+      animation: none;
+      view-timeline: --reveal-words block;
+
+      .reveal__word-inner {
+        animation: reveal-word var(--ease-out) both;
+        animation-timeline: --reveal-words;
+        animation-range: cover calc(4% + var(--w) * 3%) cover calc(24% + var(--w) * 3%);
+      }
+    }
+  }
+
+  // ── Respaldo: IntersectionObserver añade .is-visible y la animación corre por tiempo ──
+  @supports not (animation-timeline: view()) {
+    .reveal:not(.reveal--words):not(.is-visible) {
+      opacity: 0;
+    }
+
+    .reveal.is-visible {
+      animation: reveal-up 0.9s var(--ease-out) both;
+      animation-delay: calc(var(--i, 0) * 110ms);
+    }
+
+    .reveal--curtain.is-visible,
+    .reveal--curtain-left.is-visible {
+      animation-duration: 1.3s;
+      animation-timing-function: var(--ease-expo);
+    }
+    .reveal--curtain.is-visible      { animation-name: reveal-curtain; }
+    .reveal--curtain-left.is-visible { animation-name: reveal-curtain-left; }
+
+    .reveal--words:not(.is-visible) .reveal__word-inner {
+      translate: 0 115%;
+    }
+
+    .reveal--words.is-visible {
+      animation: none;
+
+      .reveal__word-inner {
+        animation: reveal-word 0.9s var(--ease-expo) both;
+        animation-delay: calc(var(--w) * 80ms);
+      }
+    }
+  }
+}
+
+// ── Fondo con curvas de nivel ────────────────────────────────────────────────
+// Uso: class="casre-topo" y, opcionalmente, --topo-color / --topo-opacity en el componente.
+// overflow: clip (y no hidden) para no crear un contenedor de scroll que rompa view().
+.casre-topo {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--topo-color, currentColor);
+    opacity: var(--topo-opacity, 0.08);
+    -webkit-mask: var(--topo-lines) center / cover no-repeat;
+    mask: var(--topo-lines) center / cover no-repeat;
+    animation: casre-topo-drift 70s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes casre-topo-drift {
+  to { transform: translate3d(32px, -24px, 0); }
+}
+
+// ── Coordenadas decorativas ──────────────────────────────────────────────────
+.casre-coords {
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+// ══════════════════════════════════════════════════════════════════════════════
+// Transiciones entre páginas (router con withViewTransitions)
+// La barra del menú tiene su propio nombre para quedarse fija mientras cambia el contenido.
+// ══════════════════════════════════════════════════════════════════════════════
+::view-transition-old(root) {
+  animation: page-out 0.32s var(--ease) both;
+}
+
+::view-transition-new(root) {
+  animation: page-in 0.55s var(--ease-expo) both;
+}
+
+@keyframes page-out {
+  to { opacity: 0; transform: translateY(-14px); }
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(26px); }
+}
+
+// ── Movimiento reducido: sin animaciones ni desplazamientos ──────────────────
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}

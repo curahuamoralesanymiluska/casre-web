@@ -1,11 +1,11 @@
+// Solo escritorio con mouse: parallax y efectos que siguen al cursor (en celular se desactivan)
+$desktop-motion: '(min-width: 993px) and (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)';
+
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; 
-  /* background-image set in HTML */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  height: 100vh;
+  background-color: #0f2d52; // Mientras llega la imagen
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -18,6 +18,40 @@
     top: 0; left: 0; width: 100%; height: 100%;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.15) 20%, rgba(15, 23, 42, 0.8) 100%);
     z-index: 1;
+  }
+
+  // Contenedor del fondo: es la capa que se mueve con el parallax
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  // Imagen de fondo: ocupa todo el hero, debajo del overlay
+  &__media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  // Brillo naranja muy suave que sigue al cursor (lo mueve hero.component.ts)
+  &__glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 640px;
+    height: 640px;
+    margin: -320px 0 0 -320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(243, 112, 33, 0.18) 0%, rgba(243, 112, 33, 0) 65%);
+    opacity: 0;
+    pointer-events: none;
+    will-change: transform, opacity;
   }
 
   &__container {
@@ -37,23 +71,53 @@
     max-width: 650px;
   }
 
+  // ── Título: cada letra sube desde una máscara ──────────────────────────────
   &__title {
     font-family: 'Montserrat', sans-serif;
-    font-size: 5.5rem; 
+    font-size: 5.5rem;
     font-weight: 900;  // Letra gruesa y sólida
     line-height: 1.0;
     text-transform: uppercase;
     letter-spacing: -2px;
-    margin: 0 0 16px 0;
+    margin: 0 0 20px 0;
     color: #ffffff; // INGENIERÍA en blanco original
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 
     // Color naranja exclusivo para la palabra CASRE
     .hero__brand-color {
-      color: #ff6b00; 
+      color: #ff6b00;
     }
   }
 
+  // Máscara de cada línea; el padding deja espacio a la tilde de la Í y a la sombra
+  &__title-line {
+    display: block;
+    white-space: nowrap; // Las letras son inline-block: sin esto podría cortarse la palabra
+    overflow: hidden;
+    overflow: clip;
+    padding: 0.14em 0.06em 0.08em;
+    margin: -0.14em -0.06em -0.08em;
+  }
+
+  // Empieza a moverse desde el primer cuadro: el texto se pinta de inmediato
+  &__char {
+    display: inline-block;
+    animation: hero-char-rise 0.95s var(--ease-expo) both;
+    animation-delay: calc(var(--c) * 0.03s);
+  }
+
+  // Línea de cota que se traza antes del subtítulo
+  &__rule {
+    display: block;
+    width: 72px;
+    height: 2px;
+    margin: 0 0 18px auto;
+    background: #F37021;
+    transform-origin: right center;
+    animation: hero-rule 0.9s var(--ease-expo) 0.45s both;
+  }
+
+  // ── Subtítulo: las palabras aparecen escalonadas ───────────────────────────
   &__subtitle {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1rem;
@@ -62,8 +126,91 @@
     text-transform: uppercase;
     letter-spacing: 2px;
     margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    column-gap: 0.45em;
+  }
+
+  &__subtitle-word {
+    display: inline-block;
+    animation: hero-word-in 0.8s var(--ease-out) both;
+    animation-delay: calc(0.55s + var(--w) * 0.12s);
+  }
+
+  // ── Detalles de plano técnico ──────────────────────────────────────────────
+  // Cruz de replanteo: línea horizontal + vertical con un círculo central
+  &__mark {
+    position: absolute;
+    z-index: 2;
+    width: 28px;
+    height: 28px;
+    pointer-events: none;
+    opacity: 0.55;
+    background:
+      linear-gradient(#F37021 0 0) center / 100% 1.5px no-repeat,
+      linear-gradient(#F37021 0 0) center / 1.5px 100% no-repeat;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1.5px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+    }
+
+    &--tl { top: 112px; left: 32px; } // Debajo de la navbar fija
+    &--br { bottom: 32px; right: 32px; }
+  }
+
+  &__coords {
+    position: absolute;
+    z-index: 2;
+    left: 72px;
+    bottom: 36px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
   }
 }
+
+// ── Parallax ligado al scroll (solo escritorio, CSS puro) ─────────────────────
+@media #{$desktop-motion} {
+  @supports (animation-timeline: scroll()) {
+    .hero__bg,
+    .hero__content {
+      animation: hero-parallax-bg linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+
+    .hero__content { animation-name: hero-parallax-content; }
+
+    // Los keyframes van dentro del @supports: Angular no reescribe los nombres de animación
+    // dentro de @supports, y así ambos quedan sin el prefijo del encapsulado
+    @keyframes hero-parallax-bg {
+      to { transform: translate3d(0, 30%, 0); }
+    }
+
+    @keyframes hero-parallax-content {
+      to { transform: translate3d(0, -12vh, 0); opacity: 0.2; }
+    }
+  }
+}
+
+@keyframes hero-char-rise {
+  from { transform: translateY(110%); }
+}
+
+@keyframes hero-rule {
+  from { transform: scaleX(0); }
+}
+
+@keyframes hero-word-in {
+  from { opacity: 0; transform: translateY(0.7em); }
+}
+
+
+
 
 // Responsivo para Celulares
 @media (max-width: 992px) {
@@ -79,24 +226,32 @@
 
     &__content {
       text-align: center;
-      color: #ffffff;
     }
 
     &__title {
-      font-size: 3.2rem;
-      color: #ffffff;
-      text-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+      font-size: clamp(2.3rem, 11vw, 3.2rem); // INGENIERÍA entra completa en pantallas angostas
+    }
 
-      .hero__brand-color {
-        color: #ff6b00;
-      }
+    &__rule {
+      margin: 0 auto 16px;
+      transform-origin: center;
     }
 
     &__subtitle {
       font-size: 0.95rem;
-      font-weight: 600;
-      color: rgba(255, 255, 255, 0.95);
       letter-spacing: 1.5px;
+      justify-content: center;
+    }
+
+    &__mark--tl { top: 100px; left: 20px; }
+    &__mark--br { display: none; } // Coincide con el botón de WhatsApp
+
+    &__coords {
+      left: 0;
+      right: 0;
+      bottom: 24px;
+      text-align: center;
+      font-size: 0.6rem;
     }
   }
 }

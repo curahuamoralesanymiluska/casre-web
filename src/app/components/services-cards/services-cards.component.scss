@@ -6,7 +6,10 @@
   background: #0f2d52;
   padding: clamp(60px, 8vw, 100px) 0;
   overflow: hidden;
+  overflow: clip; // clip no crea contenedor de scroll (necesario para animation-timeline: view())
   box-sizing: border-box;
+  --topo-color: #ffffff;
+  --topo-opacity: 0.07;
 }
 
 .casre__services-container {
@@ -49,13 +52,19 @@
   }
 }
 
+// Tilt 3D: TiltDirective escribe --rx/--ry/--lift y la posición del brillo (solo escritorio).
+// La entrada usa `translate`/`opacity`, así no choca con este `transform`.
 .casre__service-card {
+  position: relative;
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 16px;
   overflow: hidden;
+  overflow: clip;
   width: 340px;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.3s ease;
+  transform: perspective(1000px) translateY(var(--lift, 0px)) rotateX(var(--rx, 0deg))
+    rotateY(var(--ry, 0deg));
+  transition: box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
 
   @media (max-width: 992px) {
     width: 100%;
@@ -64,14 +73,31 @@
   }
 
   &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.28);
     border-color: #F37021;   // Borde naranja al hover
   }
 
+  // Brillo que sigue al cursor
+  &-glare {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 420px;
+    height: 420px;
+    margin: -210px 0 0 -210px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 62%);
+    transform: translate3d(var(--gx, 0px), var(--gy, 0px), 0);
+    opacity: var(--glare, 0);
+    pointer-events: none;
+  }
+
   &-image {
+    position: relative;
     height: 210px;
     overflow: hidden;
+    overflow: clip;
 
     img {
       width: 100%;
@@ -83,7 +109,30 @@
   }
 
   &:hover &-image img {
-    transform: scale(1.05);
+    transform: scale(1.04);
+  }
+
+  // Ícono de línea sobre la foto
+  &-icon {
+    position: absolute;
+    left: 20px;
+    bottom: 16px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #0f2d52;
+    border: 1.5px solid rgba(243, 112, 33, 0.8);
+    color: #F37021;
+    font-size: 1.5rem;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+  }
+
+  &:hover &-icon {
+    background: #F37021;
+    color: #ffffff;
   }
 
   &-body {
@@ -111,16 +160,18 @@
     h3::after {
       content: '';
       display: block;
-      width: 32px;
+      width: 56px;
       height: 2px;
       background: #F37021;
       border-radius: 2px;
       margin-top: 8px;
-      transition: width 0.3s ease;
+      transform: scaleX(0.58);
+      transform-origin: left center;
+      transition: transform 0.3s ease;
     }
   }
 
   &:hover &-body h3::after {
-    width: 56px;
+    transform: scaleX(1);
   }
 }

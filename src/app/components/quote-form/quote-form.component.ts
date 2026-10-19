@@ -1,5 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RevealDirective } from '../../shared/directives/reveal.directive';
+import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 import { FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 
@@ -15,7 +17,7 @@ interface ContactForm {
 @Component({
   selector: 'app-quote-form',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RevealDirective, MagneticDirective],
   templateUrl: './quote-form.component.html',
   styleUrl: './quote-form.component.scss',
 })

@@ -1,13 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
+import { MagneticDirective } from '../../shared/directives/magnetic.directive';
 
 @Component({
   selector: 'app-whats-app-floating',
   standalone: true,
-  imports: [],
+  imports: [MagneticDirective],
   template: `
     <a
       class="wa-float"
+      appMagnetic
       [href]="waUrl"
       target="_blank"
       rel="noopener noreferrer"

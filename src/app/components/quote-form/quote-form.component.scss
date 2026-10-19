@@ -8,6 +8,7 @@
   background: #0f2d52;    // Fondo azul corporativo
   padding: clamp(60px, 8vw, 100px) clamp(20px, 4vw, 48px);
   overflow: hidden;
+  overflow: clip; // clip no crea contenedor de scroll (necesario para animation-timeline: view())
   box-sizing: border-box;
 }
 
@@ -59,6 +60,7 @@
   padding: clamp(24px, 4vw, 36px);
   box-shadow: 0 12px 40px rgba(15, 45, 82, 0.08);
   overflow: hidden;          // Evita que los hijos se salgan
+  overflow: clip;
 
   @media (max-width: 900px) {
     flex-direction: column;
@@ -78,6 +80,7 @@
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
+  overflow: clip;
   min-height: 380px;
 }
 

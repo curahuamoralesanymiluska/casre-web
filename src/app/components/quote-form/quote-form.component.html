@@ -1,15 +1,15 @@
 <section id="cotizar" class="casre__quote">
   <!-- Encabezado -->
   <div class="casre__quote-header">
-    <h2 class="casre__quote-title">
+    <h2 class="casre__quote-title" appReveal="words">
       <span class="casre__quote-title--dark">HABLEMOS DE</span> <span class="casre__quote-title--accent">TU PROYECTO</span>
     </h2>
-    <p class="casre__quote-subtitle">
+    <p class="casre__quote-subtitle" appReveal style="--i: 1">
       Completa el formulario y nos pondremos en contacto contigo en menos de 24 horas.
     </p>
   </div>
 
-  <div class="casre__quote-inner">
+  <div class="casre__quote-inner" appReveal>
     <!-- Columna Izquierda: Imagen con CTA superpuesto -->
     <div class="casre__quote-image-col">
       <div class="casre__quote-image-wrapper">
@@ -17,6 +17,7 @@
           src="assets/img-cta-banner.webp"
           alt="Topografía y Catastro CASRE"
           class="casre__quote-img"
+          appReveal="curtain"
           loading="lazy"
         />
         <!-- Efecto borroso sutil, la imagen será muy visible -->
@@ -25,7 +26,7 @@
           <div class="casre__quote-cta-box">
             <h3>¿Prefieres escribirnos directo?</h3>
             
-            <a [href]="waUrl" target="_blank" class="casre__quote-wa-btn">
+            <a [href]="waUrl" target="_blank" class="casre__quote-wa-btn" appMagnetic>
               Abrir chat de WhatsApp <span>→</span>
             </a>
 
@@ -115,6 +116,7 @@
         <!-- Botón enviar -->
         <button
           class="casre__quote-submit"
+          appMagnetic
           [disabled]="!isValid() || isSubmitting()"
           (click)="submit()"
           type="button"

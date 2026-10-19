@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
+import type { IconName } from '../components/icon/icon.component';
 
 export interface ServiceItem {
   title: string;
   description: string;
   imageUrl: string;
+  icon: IconName;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -18,11 +20,11 @@ export class DataService {
   };
 
   readonly services: ServiceItem[] = [
-    { title: 'Topografía y Geodesia', description: 'Levantamiento de alta precisión con uso de Sistema GNSS y Drones.', imageUrl: 'assets/img-fotogrametria-dron.webp' },
-    { title: 'Saneamiento Físico Legal', description: 'Diagnóstico, titulación y saneamiento integral de predios.', imageUrl: 'assets/img-saneamiento-campo.webp' },
-    { title: 'Edificaciones y Licencias', description: 'Declaratoria de fábrica, habilitación urbana y licencias.', imageUrl: 'assets/img-edificaciones-dron.webp' },
-    { title: 'Recursos Hídricos', description: 'Estudios de balance hídrico, fajas marginales y licencias de uso de agua.', imageUrl: 'assets/img-recursos-hidricos.webp' },
-    { title: 'Gestión del Territorio', description: 'Evaluación de Riesgos (EVAR) y Análisis de Riesgos (AdR) territoriales.', imageUrl: 'assets/img-gestion-territorio.webp' }
+    { title: 'Topografía y Geodesia', description: 'Levantamiento de alta precisión con uso de Sistema GNSS y Drones.', imageUrl: 'assets/img-fotogrametria-dron.webp', icon: 'total-station' },
+    { title: 'Saneamiento Físico Legal', description: 'Diagnóstico, titulación y saneamiento integral de predios.', imageUrl: 'assets/img-saneamiento-campo.webp', icon: 'parcels' },
+    { title: 'Edificaciones y Licencias', description: 'Declaratoria de fábrica, habilitación urbana y licencias.', imageUrl: 'assets/img-edificaciones-dron.webp', icon: 'helmet' },
+    { title: 'Recursos Hídricos', description: 'Estudios de balance hídrico, fajas marginales y licencias de uso de agua.', imageUrl: 'assets/img-recursos-hidricos.webp', icon: 'water' },
+    { title: 'Gestión del Territorio', description: 'Evaluación de Riesgos (EVAR) y Análisis de Riesgos (AdR) territoriales.', imageUrl: 'assets/img-gestion-territorio.webp', icon: 'map' }
   ];
 
   getWhatsAppUrl(): string {

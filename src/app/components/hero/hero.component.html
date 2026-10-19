@@ -1,15 +1,49 @@
-<section class="hero" style="background-image: url('assets/backgrounds/hero-bg.webp')" id="hero">
+<section class="hero" id="hero" #hero>
+  <!-- Fondo: capa con parallax al hacer scroll en escritorio -->
+  <div class="hero__bg" #heroBg>
+    <!-- Imagen de fondo: es lo primero que se pinta (precargada en index.html) -->
+    <img
+      class="hero__media"
+      src="assets/backgrounds/hero-bg.webp"
+      alt=""
+      width="1024"
+      height="682"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Brillo que sigue al mouse (solo escritorio) -->
+  <span class="hero__glow" #heroGlow aria-hidden="true"></span>
+
+  <!-- Marcas tipo cruz de replanteo -->
+  <span class="hero__mark hero__mark--tl" aria-hidden="true"></span>
+  <span class="hero__mark hero__mark--br" aria-hidden="true"></span>
+
   <div class="hero__container">
-    <div class="hero__content">
-      
-      <h1 class="hero__title">
-        <span class="hero__brand-color">CASRE</span><br>INGENIERÍA
+    <div class="hero__content" #heroContent>
+      <!-- Cada letra sube desde una máscara; el lector de pantalla lee el aria-label -->
+      <h1 class="hero__title" aria-label="CASRE INGENIERÍA">
+        @for (line of titleLines; track line.text) {
+          <span class="hero__title-line" [class.hero__brand-color]="line.accent" aria-hidden="true">
+            @for (char of line.chars; track $index) {
+              <span class="hero__char" [style.--c]="char.order">{{ char.value }}</span>
+            }
+          </span>
+        }
       </h1>
-      
+
+      <span class="hero__rule" aria-hidden="true"></span>
+
       <p class="hero__subtitle">
-        Topografía, Diseño y Construcción
+        @for (word of subtitleWords; track $index) {
+          <!-- El espacio final no se ve (lo da el gap), pero mantiene el texto legible para lectores -->
+          <span class="hero__subtitle-word" [style.--w]="$index">{{ word + ' ' }}</span>
+        }
       </p>
-      
     </div>
   </div>
+
+  <p class="hero__coords casre-coords" aria-hidden="true">
+    13°09′S · 74°13′W · Ayacucho, Perú
+  </p>
 </section>

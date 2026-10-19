@@ -1,5 +1,8 @@
 // ── CASRE Navbar ─────────────────────────────────────────────────────────────
-// Transparente con letras blancas arriba · Fondo blanco al hacer scroll
+// Transparente con letras blancas arriba · Al hacer scroll: compacta y con fondo difuminado
+// Lo compacto se logra con transform (fondo con scaleY, contenido con translate y logo con
+// scale): la altura real no cambia y no hay reflow. El fondo va en ::before porque un
+// backdrop-filter en la <nav> rompería el position: fixed del menú lateral.
 
 .casre__navbar {
   position: fixed;
@@ -7,18 +10,34 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: transparent;
-  box-shadow: none;
-  transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.3s ease;
 
-  // Fondo blanco sólido al hacer scroll
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-backdrop-filter: blur(16px) saturate(170%);
+    backdrop-filter: blur(16px) saturate(170%);
+    box-shadow: 0 4px 20px rgba(15, 45, 82, 0.12);
+    opacity: 0;
+    transform-origin: top center;
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    pointer-events: none;
+  }
+
+  // Fondo difuminado y barra compacta (80px → 64px) al hacer scroll
   &--scrolled {
-    background: #ffffff !important;
-    backdrop-filter: none !important;
-    box-shadow: 0 4px 20px rgba(15, 45, 82, 0.12) !important;
+    &::before {
+      opacity: 1;
+      transform: scaleY(0.8);
+    }
+
+    .casre__navbar-container {
+      transform: translateY(-8px);
+    }
 
     .casre__navbar-logo {
-      height: 50px;
+      scale: 0.86;
     }
 
     .casre__navbar-links a {
@@ -46,6 +65,32 @@
   }
 }
 
+// ── Barra de progreso de lectura ─────────────────────────────────────────────
+.casre__navbar-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #F37021;
+  transform: scaleX(0);
+  transform-origin: left center;
+  pointer-events: none;
+
+  @supports (animation-timeline: scroll()) {
+    animation: casre-progress linear both;
+    animation-timeline: scroll(root);
+  }
+}
+
+// Dentro del @supports: Angular no reescribe ahí los nombres de animación, así que los
+// keyframes tampoco deben llevar el prefijo del encapsulado
+@supports (animation-timeline: scroll()) {
+  @keyframes casre-progress {
+    to { transform: scaleX(1); }
+  }
+}
+
 // ── Overlay del Mobile Drawer ────────────────────────────────────────────────
 .casre__navbar-overlay {
   position: fixed;
@@ -65,6 +110,9 @@
 }
 
 .casre__navbar-container {
+  position: relative;
+  view-transition-name: casre-navbar; // Se queda fija durante la transición entre páginas
+  transition: transform 0.35s var(--ease);
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 clamp(16px, 4vw, 48px);
@@ -87,7 +135,8 @@
   max-width: 240px;
   width: auto;
   object-fit: contain;
-  transition: transform 0.3s ease, height 0.3s ease;
+  transform-origin: left center;
+  transition: transform 0.3s ease, scale 0.35s var(--ease);
 
   &:hover {
     transform: scale(1.03);
@@ -117,28 +166,30 @@
     transition: color 0.2s ease;
     white-space: nowrap;
 
-    // Línea subrayado naranja al hover
+    // Subrayado naranja: entra desde la izquierda y sale hacia la derecha
     &::after {
       content: '';
       position: absolute;
       bottom: -2px;
       left: 0;
-      width: 0;
+      width: 100%;
       height: 3px;
       background: #F37021;
       border-radius: 2px;
-      transition: width 0.25s ease;
+      transform: scaleX(0);
+      transform-origin: right center;
+      transition: transform 0.45s var(--ease-expo);
     }
 
     &:hover {
       color: #F37021;                // Naranja al hover
-      &::after { width: 100%; }
+      &::after { transform: scaleX(1); transform-origin: left center; }
     }
 
     // Link activo (ruta seleccionada)
     &.casre__navbar-link--active {
       color: #F37021 !important;     // Naranja cuando está seleccionado
-      &::after { width: 100%; }
+      &::after { transform: scaleX(1); }
     }
   }
 }
@@ -294,12 +345,12 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-bottom: 1px solid #f1f5f9;
-    transition: color 0.2s ease, padding-left 0.2s ease, font-weight 0.2s ease;
+    transition: color 0.2s ease, translate 0.2s ease;
     
     &:hover { 
       color: #F37021; 
       font-weight: 600;
-      padding-left: 6px;
+      translate: 6px 0;
     }
   }
 }

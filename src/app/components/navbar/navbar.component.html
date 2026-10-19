@@ -16,7 +16,7 @@
       <li><a routerLink="/contacto" routerLinkActive="casre__navbar-link--active">Contacto</a></li>
     </ul>
 
-    <a href="#cotizar" class="casre__navbar-cta">Solicitar Cotización</a>
+    <a href="#cotizar" class="casre__navbar-cta" appMagnetic>Solicitar Cotización</a>
 
     <button
       class="casre__navbar-hamburger"
@@ -27,6 +27,9 @@
       <span></span><span></span><span></span>
     </button>
   </div>
+
+  <!-- Barra de progreso de lectura -->
+  <span class="casre__navbar-progress" #progress aria-hidden="true"></span>
 
   <!-- Mobile Drawer Overlay -->
   <div class="casre__navbar-overlay" [class.casre__navbar-overlay--open]="menuOpen()" (click)="closeMenu()"></div>
