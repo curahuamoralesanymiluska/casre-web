@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:hosting": "ng build --base-href / --output-path dist/hosting && node -e \"require('fs').copyFileSync('hosting/.htaccess','dist/hosting/browser/.htaccess')\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "deploy": "ng build --base-href /casre-web/ && npx gh-pages -d dist/angular-production-ready/browser -b gh-pages"

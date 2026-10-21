@@ -1,0 +1,65 @@
+# CASRE INGENIERÍA - hosting Apache (https://casreconsultores.com)
+# Se copia a dist/hosting/browser con `npm run build:hosting`.
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. www -> sin www (siempre a HTTPS, en una sola redirección)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301,NE]
+
+  # 2. Forzar HTTPS (X-Forwarded-Proto cubre hostings detrás de proxy/CDN)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !https
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
+
+  # 3. Rutas de Angular: si no es un archivo o carpeta real, servir index.html
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Compresión
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript text/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml image/x-icon font/ttf font/otf
+</IfModule>
+
+<IfModule mod_mime.c>
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+  AddType application/javascript .js .mjs
+</IfModule>
+
+# Caché: los .js/.css llevan hash en el nombre, así que pueden cachearse un año.
+# index.html nunca se cachea para que los cambios se vean al instante.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/x-icon "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "-[A-Za-z0-9_-]{8,}\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+</IfModule>
