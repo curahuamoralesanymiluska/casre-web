@@ -21,7 +21,7 @@ export class DataService {
     social: {
       facebook: 'https://www.facebook.com/profile.php?id=61595388673662',
       linkedin: '',
-      instagram: ''
+      instagram: 'https://www.instagram.com/casre_ingenieria/'
     }
   };
 
