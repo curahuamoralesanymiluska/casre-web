@@ -15,7 +15,7 @@ export class DataService {
     whatsapp: '51931750970',
     email: 'casreconsultores@gmail.com',
     address: 'Jr. Simón Bolívar S/N Sector Educación Mz E Lt 01B. Distrito de Ayacucho, Provincia de Huamanga',
-    ruc: '20601234567',
+    ruc: '20614536307',
     manager: 'Ing. Responsable',
     // Redes sociales: una URL vacía oculta el ícono en el footer
     social: {
